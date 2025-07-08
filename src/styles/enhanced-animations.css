@@ -1,0 +1,229 @@
+/* Enhanced Animations for GenZen Pro Brand Experience */
+
+/* Sophisticated micro-interactions */
+@keyframes subtle-pulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.95; 
+    transform: scale(1.01); 
+  }
+}
+
+@keyframes strategic-reveal {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes authority-glow {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 hsla(var(--primary), 0.1); 
+  }
+  50% { 
+    box-shadow: 0 0 0 8px hsla(var(--primary), 0.02); 
+  }
+}
+
+@keyframes progress-flow {
+  0% { 
+    transform: translateX(-100%); 
+    opacity: 0; 
+  }
+  50% { 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+}
+
+/* Enhanced button interactions */
+.enhanced-cta {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.enhanced-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsla(var(--primary), 0.1),
+    transparent
+  );
+  transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.enhanced-cta:hover::before {
+  left: 100%;
+}
+
+.enhanced-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px hsla(var(--primary), 0.15);
+}
+
+/* Strategic card elevations */
+.strategic-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.strategic-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px hsla(var(--primary), 0);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.strategic-card:hover::after {
+  box-shadow: 0 0 0 1px hsla(var(--primary), 0.1);
+}
+
+.strategic-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 35px hsla(var(--foreground), 0.08);
+}
+
+/* Authority-building navigation */
+.authority-nav {
+  backdrop-filter: blur(20px) saturate(180%);
+  background: hsla(var(--background), 0.85);
+  border-bottom: 1px solid hsla(var(--border), 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.authority-nav.scrolled {
+  background: hsla(var(--background), 0.95);
+  border-bottom: 1px solid hsla(var(--primary), 0.1);
+  box-shadow: 0 4px 20px hsla(var(--foreground), 0.04);
+}
+
+/* Enhanced progress indicators */
+.enhanced-progress {
+  background: linear-gradient(
+    90deg,
+    hsla(var(--primary), 0.1),
+    hsla(var(--primary), 0.3),
+    hsla(var(--primary), 0.1)
+  );
+  background-size: 200% 100%;
+  animation: progress-flow 2s ease-in-out infinite;
+}
+
+/* Sophisticated text reveals */
+.strategic-text-reveal {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--foreground)),
+    hsl(var(--primary)),
+    hsl(var(--foreground))
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: strategic-reveal 1.5s ease-out forwards;
+}
+
+/* Professional loading states */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsla(var(--muted), 0.2) 0%,
+    hsla(var(--muted), 0.4) 50%,
+    hsla(var(--muted), 0.2) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced scroll indicators */
+.scroll-indicator {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-indicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Strategic section transitions */
+.section-entrance {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-entrance.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Authority-building hover states */
+.authority-link {
+  position: relative;
+  transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.authority-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: hsl(var(--primary));
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.authority-link:hover::after {
+  width: 100%;
+}
+
+.authority-link:hover {
+  color: hsl(var(--primary));
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

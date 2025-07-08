@@ -1,0 +1,106 @@
+---
+// Enhanced Animation Controller for GenZen Pro
+---
+
+<script>
+document.addEventListener('astro:page-load', () => {
+  // Enhanced navigation scroll effects
+  const nav = document.getElementById('main-nav');
+  let lastScroll = 0;
+  
+  function updateNav() {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+      nav?.classList.add('scrolled');
+    } else {
+      nav?.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+  }
+  
+  window.addEventListener('scroll', updateNav, { passive: true });
+  
+  // Enhanced intersection observer for strategic reveals
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const element = entry.target;
+        
+        // Add strategic reveal animation
+        element.classList.add('section-entrance', 'animate');
+        
+        // Enhanced card animations
+        if (element.classList.contains('strategic-card')) {
+          element.style.animationDelay = `${Math.random() * 200}ms`;
+        }
+        
+        // Progress bar animations
+        const progressBars = element.querySelectorAll('.enhanced-progress');
+        progressBars.forEach((bar, index) => {
+          setTimeout(() => {
+            bar.style.animation = 'progress-flow 1.5s ease-out forwards';
+          }, index * 150);
+        });
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  });
+  
+  // Observe all strategic elements
+  const strategicElements = document.querySelectorAll('.strategic-card, [data-animate]');
+  strategicElements.forEach(el => {
+    el.classList.add('section-entrance');
+    revealObserver.observe(el);
+  });
+  
+  // Enhanced CTA button interactions
+  const ctaButtons = document.querySelectorAll('.enhanced-cta');
+  ctaButtons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      button.style.animation = 'authority-glow 2s ease-in-out infinite';
+    });
+    
+    button.addEventListener('mouseleave', () => {
+      button.style.animation = '';
+    });
+  });
+  
+  // Sophisticated parallax for hero section
+  const hero = document.querySelector('.company-hero-section');
+  if (hero) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.3;
+      hero.style.transform = `translateY(${rate}px)`;
+    }, { passive: true });
+  }
+  
+  // Enhanced loading states for dynamic content
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.classList.add('loading-shimmer');
+        submitButton.disabled = true;
+      }
+    });
+  });
+  
+  // Authority-building micro-interactions
+  const authorityLinks = document.querySelectorAll('.authority-link');
+  authorityLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      link.style.animation = 'subtle-pulse 1s ease-in-out';
+    });
+    
+    link.addEventListener('mouseleave', () => {
+      link.style.animation = '';
+    });
+  });
+});
+</script>

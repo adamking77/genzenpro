@@ -6,6 +6,7 @@ import Navigation from '../components/Navigation.astro'; // New import
 import Footer from '../components/sections/Footer.astro'; // Import Footer
 import ScrollToTop from '../components/interactive/ScrollToTop.tsx'; // Adjusted path
 import { Toaster } from '../components/ui/toaster.tsx'; // Adjusted path
+import EnhancedAnimations from '../components/EnhancedAnimations.astro'; // Enhanced animations
 
 // Define props that can be passed to the layout
 export interface Props {
@@ -62,6 +63,7 @@ const {
     <Toaster client:load />
     <ScrollToTop client:idle />
     <Footer />
+    <EnhancedAnimations />
   </ThemeProvider>
 </body>
 </html>
