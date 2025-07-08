@@ -137,17 +137,58 @@ const GenZenConversationalForm: React.FC<GenZenConversationalFormProps> = ({ onC
     }
   };
 
-  const handleSubmit = () => {
-    console.log('GenZen Pro Application:', answers);
-    setSubmitted(true);
-    
-    // Auto-redirect to thank you page after 3 seconds
-    setTimeout(() => {
-      if (onComplete) {
-        onComplete(); // Close modal first
+  const handleSubmit = async () => {
+    try {
+      // Prepare form data including "Other" details
+      const submissionData = { ...answers };
+      
+      // Add "Other" details to multiselect fields where applicable
+      Object.keys(answers).forEach(key => {
+        if (key.endsWith('OtherDetails') && answers[key]) {
+          const baseKey = key.replace('OtherDetails', '');
+          if (Array.isArray(submissionData[baseKey]) && submissionData[baseKey].includes('Other')) {
+            // Replace "Other" with the actual details
+            const index = submissionData[baseKey].indexOf('Other');
+            submissionData[baseKey][index] = `Other: ${answers[key]}`;
+          }
+          // Remove the separate details field
+          delete submissionData[key];
+        }
+      });
+
+      console.log('Submitting GenZen Pro Application:', submissionData);
+      
+      // Submit to Notion API
+      const response = await fetch('/api/submit-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit application');
       }
-      window.location.href = '/application-submitted';
-    }, 3000);
+
+      const result = await response.json();
+      console.log('Application submitted successfully:', result);
+      
+      setSubmitted(true);
+      
+      // Auto-redirect to thank you page after 3 seconds
+      setTimeout(() => {
+        if (onComplete) {
+          onComplete(); // Close modal first
+        }
+        window.location.href = '/application-submitted';
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      // You could add error state handling here
+      alert('There was an error submitting your application. Please try again.');
+    }
   };
 
   const progress = currentQuestion > -1 ? ((currentQuestion + 1) / (questions.length + 1)) * 100 : 0;
