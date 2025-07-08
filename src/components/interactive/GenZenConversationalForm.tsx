@@ -168,7 +168,13 @@ const GenZenConversationalForm: React.FC<GenZenConversationalFormProps> = ({ onC
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit application');
+        const errorDetails = await response.text();
+        console.error('Submission failed:', {
+          status: response.status,
+          statusText: response.statusText,
+          details: errorDetails
+        });
+        throw new Error(`Failed to submit application: ${response.status} - ${errorDetails}`);
       }
 
       const result = await response.json();

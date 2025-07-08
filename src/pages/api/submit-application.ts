@@ -3,10 +3,18 @@ import type { APIRoute } from 'astro';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.json();
+    console.log('Received form data:', formData);
     
     // Validate required environment variables
     const notionToken = import.meta.env.NOTION_TOKEN;
     const notionDatabaseId = import.meta.env.NOTION_DATABASE_ID;
+    
+    console.log('Environment check:', {
+      hasToken: !!notionToken,
+      hasDatabase: !!notionDatabaseId,
+      tokenLength: notionToken ? notionToken.length : 0,
+      databaseId: notionDatabaseId ? notionDatabaseId.substring(0, 8) + '...' : 'missing'
+    });
     
     if (!notionToken || !notionDatabaseId) {
       console.error('Missing Notion environment variables');
@@ -106,6 +114,8 @@ export const POST: APIRoute = async ({ request }) => {
       }
     };
 
+    console.log('Sending to Notion:', JSON.stringify(notionPageData, null, 2));
+
     // Submit to Notion
     const notionResponse = await fetch('https://api.notion.com/v1/pages', {
       method: 'POST',
@@ -119,9 +129,16 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!notionResponse.ok) {
       const errorText = await notionResponse.text();
-      console.error('Notion API error:', errorText);
+      console.error('Notion API error:', {
+        status: notionResponse.status,
+        statusText: notionResponse.statusText,
+        errorText: errorText
+      });
       return new Response(
-        JSON.stringify({ error: 'Failed to submit application' }), 
+        JSON.stringify({ 
+          error: 'Failed to submit application',
+          details: `Notion API returned ${notionResponse.status}: ${errorText}`
+        }), 
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
