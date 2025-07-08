@@ -1,0 +1,49 @@
+---
+interface Props {
+  company: string;
+  title: string;
+  subtitle: string;
+  navigation: string[];
+}
+
+const { company, title, subtitle, navigation } = Astro.props;
+---
+
+<section class="py-8 lg:py-12 bg-background">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="space-y-24 lg:space-y-32">
+      <div class="flex items-center justify-between">
+        <div class="text-sm font-medium tracking-widest text-foreground uppercase">
+          {company}
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          {navigation.map((item) => (
+            item === 'Reports' ? (
+              <a
+                href="/reports"
+                class="text-xs font-normal text-foreground/50 hover:text-foreground transition-colors tracking-wide"
+              >
+                {item}
+              </a>
+            ) : (
+              <button 
+                class="text-xs font-normal text-foreground/50 hover:text-foreground transition-colors tracking-wide"
+              >
+                {item}
+              </button>
+            )
+          ))}
+        </nav>
+      </div>
+      
+      <div class="space-y-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-[1.1] tracking-tight max-w-6xl text-foreground">
+          {title}
+        </h1>
+        <p class="text-base font-light text-foreground/60 leading-relaxed max-w-2xl">
+          {subtitle}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

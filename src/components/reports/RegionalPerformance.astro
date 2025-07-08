@@ -1,0 +1,89 @@
+---
+const regions = [
+  { name: "North America", revenue: "$12.4M", growth: "+24%", clients: 156, color: "bg-foreground/80" },
+  { name: "Europe", revenue: "$8.7M", growth: "+18%", clients: 132, color: "bg-foreground/60" },
+  { name: "Asia Pacific", revenue: "$3.6M", growth: "+42%", clients: 89, color: "bg-foreground/40" },
+  { name: "Latin America", revenue: "$1.2M", growth: "+31%", clients: 34, color: "bg-foreground/20" },
+];
+---
+
+<section class="py-32 lg:py-40 bg-secondary/20">
+  <div class="max-w-4xl mx-auto px-20 lg:px-24">
+    <div class="space-y-20">
+      <div class="grid lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-5 animate-fade-in">
+          <div class="space-y-8">
+            <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground hover:scale-105 transition-transform duration-300">
+              Regional Performance
+            </h2>
+            <div class="w-12 h-px bg-foreground/20 transition-all duration-1000 hover:w-24"></div>
+            <p class="text-base font-light text-foreground leading-relaxed">
+              Global expansion strategy delivering consistent growth across all major markets
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 lg:col-start-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {regions.map((region, index) => (
+              <div
+                class="group relative cursor-pointer animate-fade-in hover:scale-105 transition-all duration-300"
+                style={`animation-delay: ${index * 200}ms;`}
+              >
+                <div class="bg-background/80 backdrop-blur-sm border border-foreground/10 rounded-lg p-6 space-y-4 hover:border-foreground/30 hover:shadow-xl transition-all duration-300">
+                  <div class="flex items-center space-x-3">
+                    <div class={`w-3 h-3 rounded-full ${region.color} transition-all duration-300 group-hover:scale-150 group-hover:shadow-lg`}></div>
+                    <h3 class="text-lg font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                      {region.name}
+                    </h3>
+                  </div>
+
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                      <span class="text-sm font-light text-foreground/70">Revenue</span>
+                      <span class="text-lg font-light text-foreground">{region.revenue}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-sm font-light text-foreground/70">Growth</span>
+                      <span class="text-sm font-light text-foreground/70 bg-foreground/10 px-2 py-1 rounded-full">
+                        {region.growth}
+                      </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-sm font-light text-foreground/70">Clients</span>
+                      <span class="text-sm font-light text-foreground">{region.clients}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-12 pt-16">
+        <div class="group cursor-pointer hover:scale-110 transition-all duration-300 animate-fade-in" style="animation-delay: 800ms;">
+          <div class="text-center space-y-4">
+            <div class="text-4xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">411</div>
+            <div class="text-sm font-light text-foreground tracking-wider">TOTAL CLIENTS</div>
+            <div class="text-xs font-light text-foreground/50">Across all regions</div>
+          </div>
+        </div>
+        <div class="group cursor-pointer hover:scale-110 transition-all duration-300 animate-fade-in" style="animation-delay: 900ms;">
+          <div class="text-center space-y-4">
+            <div class="text-4xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">26</div>
+            <div class="text-sm font-light text-foreground tracking-wider">COUNTRIES</div>
+            <div class="text-xs font-light text-foreground/50">Active presence</div>
+          </div>
+        </div>
+        <div class="group cursor-pointer hover:scale-110 transition-all duration-300 animate-fade-in" style="animation-delay: 1000ms;">
+          <div class="text-center space-y-4">
+            <div class="text-4xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">$25.9M</div>
+            <div class="text-sm font-light text-foreground tracking-wider">GLOBAL REVENUE</div>
+            <div class="text-xs font-light text-foreground/50">Combined total</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

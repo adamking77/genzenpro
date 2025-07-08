@@ -1,0 +1,115 @@
+---
+interface Item {
+  title: string;
+  description: string;
+  meta?: string;
+}
+
+interface Props {
+  leftTitle: string;
+  leftDescription: string;
+  rightTitle: string;
+  rightItems: Item[];
+  reversed?: boolean;
+}
+
+const { 
+  leftTitle,
+  leftDescription,
+  rightTitle,
+  rightItems,
+  reversed = false 
+} = Astro.props;
+---
+
+<section class="py-24 lg:py-40 bg-secondary/30">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class={`grid grid-cols-12 gap-20 ${reversed ? 'lg:[&>*:nth-child(1)]:col-start-7 lg:[&>*:nth-child(2)]:col-start-1 lg:[&>*:nth-child(2)]:row-start-1' : ''}`}>
+      {/* Left Content */}
+      <div class="col-span-12 lg:col-span-6 "" data-animate="content-left">
+        <div class="space-y-12">
+          <div class="space-y-8">
+            <h2 class="text-4xl md:text-5xl font-light leading-[1.1] tracking-tight text-foreground">
+              {leftTitle}
+            </h2>
+            <div class="w-16 h-px bg-border"></div>
+            <div class="space-y-6">
+              <p class="text-lg font-light text-muted-foreground leading-relaxed">
+                {leftDescription}
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      {/* Right Content */}
+      <div class="col-span-12 lg:col-span-6 "" data-animate="content-right">
+        <div class="space-y-12">
+          <div class="space-y-6">
+            <h3 class="text-2xl font-light tracking-tight text-foreground">
+              {rightTitle}
+            </h3>
+          </div>
+          
+          <div class="space-y-8">
+            {rightItems.map((item) => (
+              <div class="group border-b border-border pb-8 last:border-b-0">
+                <div class="flex items-start justify-between mb-4">
+                  <h4 class="text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">
+                    {item.title}
+                  </h4>
+                  {item.meta && (
+                    <div class="text-xs font-light text-muted-foreground tracking-wider uppercase bg-secondary px-3 py-1 rounded">
+                      {item.meta}
+                    </div>
+                  )}
+                </div>
+                <div class="space-y-4">
+                  <p class="text-base font-light text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    // Observe elements with progressive delays
+    const elementsWithDelays = [
+      { selector: '[data-animate="content-left"]', delay: 0 },
+      { selector: '[data-animate="content-right"]', delay: 200 }
+    ];
+
+    elementsWithDelays.forEach(({ selector, delay }) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const targetElement = entry.target as HTMLElement;
+              setTimeout(() => {
+                targetElement.classList.remove('opacity-0', 'translate-y-10');
+                targetElement.classList.add('opacity-100', 'translate-y-0');
+              }, delay);
+            }
+          });
+        }, observerOptions);
+
+        observer.observe(element);
+      }
+    });
+  });
+</script>

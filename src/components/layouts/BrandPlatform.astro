@@ -1,0 +1,82 @@
+---
+interface Props {
+  backText: string;
+  company: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+const { backText, company, title, subtitle, description } = Astro.props;
+---
+
+<section class="py-24 lg:py-32 bg-background text-foreground">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="space-y-16">
+      <div class="transition-all duration-1000 "" data-animate="brand-header">
+        <!-- Assuming a link or button functionality might be desired for backText. For now, a button styled like the original. -->
+        <!-- If this needs to be a link, it should be <a href="..."> -->
+        <button class="text-xs font-normal text-foreground/50 tracking-widest uppercase hover:text-foreground transition-colors mb-6">
+          <!-- Unicode arrow, can be replaced with an SVG or icon component if available -->
+          &larr; {backText}
+        </button>
+        <div class="text-sm font-light text-foreground/60 mb-4 tracking-wide">
+          {company}
+        </div>
+      </div>
+      
+      <div class="space-y-6 transition-all duration-1000 delay-200 "" data-animate="brand-title">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] tracking-tight max-w-4xl text-foreground">
+          {title}
+        </h1>
+        
+        <div class="w-12 h-px bg-foreground/30 my-6"></div>
+        
+        <div class="text-xs font-normal text-foreground/40 tracking-widest uppercase">
+          {subtitle}
+        </div>
+      </div>
+      
+      <div class="transition-all duration-1000 delay-400 "" data-animate="brand-description">
+        <p class="text-base font-light text-foreground/70 leading-relaxed max-w-2xl">
+          {description}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    // Observe elements with progressive delays
+    const elementsWithDelays = [
+      { selector: '[data-animate="brand-header"]', delay: 0 },
+      { selector: '[data-animate="brand-title"]', delay: 200 },
+      { selector: '[data-animate="brand-description"]', delay: 400 }
+    ];
+
+    elementsWithDelays.forEach(({ selector, delay }) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const targetElement = entry.target as HTMLElement;
+              setTimeout(() => {
+                targetElement.classList.remove('opacity-0', 'translate-y-10');
+                targetElement.classList.add('opacity-100', 'translate-y-0');
+              }, delay);
+            }
+          });
+        }, observerOptions);
+
+        observer.observe(element);
+      }
+    });
+  });
+</script>

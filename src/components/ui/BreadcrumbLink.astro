@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from '@/lib/utils';
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string; // Ensure href is always provided for a link
+}
+
+const { class: className, href, ...props } = Astro.props;
+---
+<a
+  href={href}
+  class={cn("transition-colors hover:text-foreground", className)}
+  {...props}
+>
+  <slot />
+</a>

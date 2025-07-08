@@ -1,0 +1,1197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Premium Layout Components
+import CompanyHero from '../components/layouts/CompanyHero.astro';
+import ContentSplit from '../components/layouts/ContentSplit.astro';
+import HybridShowcase from '../components/layouts/HybridShowcase.astro';
+import FoundedStory from '../components/layouts/FoundedStory.astro';
+
+// Section Components
+import Services from '../components/sections/Services.astro';
+import About from '../components/sections/About.astro';
+
+// Reports Components
+import ExecutiveSummary from '../components/reports/ExecutiveSummary.astro';
+
+// Interactive Components
+import SimpleQualificationModal from '../components/interactive/SimpleQualificationModal.tsx';
+
+// Problem Content for ContentSplit - EXACT content from WEB_COPY.md
+const problemRightItems = [
+  {
+    title: "Authority Weaponization",
+    description: "Your achievements, relationships, and influence are being weaponized against you through calculated communication tactics designed to dismantle your authority.",
+    meta: "Core Issue"
+  },
+  {
+    title: "System Blindness",
+    description: "That hollow feeling when you recognize that the very systems designed to protect you fundamentally misunderstand what you're facing.",
+    meta: "Recognition"
+  },
+  {
+    title: "Pattern Isolation",
+    description: "That moment when you know something is wrong, but everyone around you seems blind to the pattern that's become painfully clear to you.",
+    meta: "Clarity"
+  }
+];
+
+// Gap Analysis - EXACT content from WEB_COPY.md
+const gapAnalysisItems = [
+  "Executive coaches focus on your performance while missing the calculated tactics being deployed against you",
+  "Business advisors lack the intelligence background to recognize systematic power manipulation", 
+  "Legal counsel addresses technical remedies while remaining blind to calculated communication tactics",
+  "Personal development teaches coping mechanisms rather than strategic counter-measures"
+];
+
+
+
+// Application Blueprint Points - EXACT content from WEB_COPY.md
+const applicationPoints = [
+  "Complete mapping of power dynamics in your specific situation reveals exploitation signatures targeting decision-making authority",
+  "Strategic intervention design creates immediate leverage while identification of manipulation patterns occurs before manifestation",
+  "Comprehensive strategic evaluation conducted with complete discretion provides transformation pathways from vulnerability to advantage",
+  "Immediate access to strategic intelligence through 'The Architecture of Power' reveals three fundamental exploitation patterns"
+];
+---
+
+<BaseLayout 
+  title="GenZen Pro - Strategic Communication Design for High-Stakes Situations" 
+  description="When Critical Conversations Feel Like Traps - The Decisive Edge in Critical Communications"
+>
+  <!-- Hero Section: Keep existing large typography -->
+  <CompanyHero 
+    eyebrow="The Decisive Edge in Critical Communications"
+    title="Strategic Communication Design"
+    location="for High-Stakes Situations"
+    subtitle="When Critical Conversations Feel Like Traps"
+    ctaText="Apply For Your Power Dynamics Blueprint"
+    ctaLink="#apply"
+  />
+
+  <!-- Problem Section: Elegant Professional Layout -->
+  <section id="problem" class="py-16 sm:py-20 lg:py-32 bg-foreground/5">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-32 mb-12 lg:mb-0">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground mb-6 sm:mb-8">
+              When Success Becomes Vulnerability
+            </h2>
+            <div class="w-12 h-px bg-foreground/20"></div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-8">
+          <div class="space-y-8 sm:space-y-10 lg:space-y-12">
+            {problemRightItems.map((item, index) => (
+              <div class="group">
+                <div class="flex items-start space-x-4 sm:space-x-6 lg:space-x-8 py-6 sm:py-8 border-b border-foreground/10 last:border-b-0">
+                  <div class="text-base sm:text-lg font-light text-foreground/30 w-6 sm:w-8 flex-shrink-0">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <div class="flex-1 space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+                      <h3 class="text-lg sm:text-xl font-light text-foreground group-hover:text-blue-500 transition-colors duration-300">
+                        {item.title}
+                      </h3>
+                      {item.meta && (
+                        <div class="text-xs font-light text-foreground/50 tracking-wider uppercase flex-shrink-0">
+                          {item.meta}
+                        </div>
+                      )}
+                    </div>
+                    <p class="text-base font-light text-foreground/70 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gap Analysis: Executive Summary Power Layout -->
+  <section class="py-32 lg:py-40">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12">
+      <div class="grid lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-6">
+          <div class="space-y-12" data-animate="gap-content">
+            <div class="space-y-8">
+              <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+                The Critical Gap in Protection
+              </h2>
+              <div class="w-12 h-px bg-foreground/20"></div>
+            </div>
+            
+            <div class="space-y-8">
+              <p class="text-lg font-light text-foreground leading-relaxed">
+                Traditional advisors consistently fail because they lack the specialized intelligence background needed to recognize and counter sophisticated manipulation tactics targeting your decision-making authority.
+              </p>
+              
+              <div class="pt-8 border-t border-foreground/10">
+                <p class="text-xl font-light text-foreground leading-relaxed">
+                  You need strategic control of the precise moments where your decision-making authority is being systematically targeted.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div class="space-y-16" data-animate="gap-analysis">
+            <div class="space-y-12">
+              <h3 class="text-xl font-light text-foreground">Critical Advisor Limitations</h3>
+              
+              <div class="space-y-8">
+                <div class="group p-6 border border-foreground/10 hover:border-foreground/20 hover:bg-foreground/5 transition-all duration-300 rounded-lg">
+                  <div class="mb-4">
+                    <div class="text-xs font-light text-foreground/40 tracking-widest uppercase bg-secondary/30 px-3 py-1 rounded">
+                      STRATEGY
+                    </div>
+                  </div>
+                  <p class="text-base font-light text-foreground leading-relaxed">
+                    Executive coaches focus on performance while missing calculated tactics
+                  </p>
+                </div>
+                
+                <div class="group p-6 border border-foreground/10 hover:border-foreground/20 hover:bg-foreground/5 transition-all duration-300 rounded-lg">
+                  <div class="mb-4">
+                    <div class="text-xs font-light text-foreground/40 tracking-widest uppercase bg-secondary/30 px-3 py-1 rounded">
+                      INTELLIGENCE
+                    </div>
+                  </div>
+                  <p class="text-base font-light text-foreground leading-relaxed">
+                    Business advisors lack intelligence background for power manipulation
+                  </p>
+                </div>
+                
+                <div class="group p-6 border border-foreground/10 hover:border-foreground/20 hover:bg-foreground/5 transition-all duration-300 rounded-lg">
+                  <div class="mb-4">
+                    <div class="text-xs font-light text-foreground/40 tracking-widest uppercase bg-secondary/30 px-3 py-1 rounded">
+                      LEGAL
+                    </div>
+                  </div>
+                  <p class="text-base font-light text-foreground leading-relaxed">
+                    Legal counsel addresses technical remedies, blind to communication tactics
+                  </p>
+                </div>
+                
+                <div class="group p-6 border border-foreground/10 hover:border-foreground/20 hover:bg-foreground/5 transition-all duration-300 rounded-lg">
+                  <div class="mb-4">
+                    <div class="text-xs font-light text-foreground/40 tracking-widest uppercase bg-secondary/30 px-3 py-1 rounded">
+                      PERSONAL
+                    </div>
+                  </div>
+                  <p class="text-base font-light text-foreground leading-relaxed">
+                    Personal development teaches coping mechanisms rather than counter-measures
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+      };
+
+      const elementsWithDelays = [
+        { selector: '[data-animate="gap-content"]', delay: 0 },
+        { selector: '[data-animate="gap-analysis"]', delay: 200 }
+      ];
+
+      elementsWithDelays.forEach(({ selector, delay }) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const targetElement = entry.target;
+                setTimeout(() => {
+                  targetElement.classList.remove('opacity-0', 'translate-y-10');
+                  targetElement.classList.add('opacity-100', 'translate-y-0');
+                }, delay);
+              }
+            });
+          }, observerOptions);
+
+          observer.observe(element);
+        }
+      });
+    });
+  </script>
+
+
+  <!-- Solution Section: MarketAnalysis-Inspired Strategic Layout -->
+  <section class="py-32 lg:py-40">
+    <div class="max-w-4xl mx-auto px-20 lg:px-24">
+      <div class="grid lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-7">
+          <div class="space-y-12">
+            <div class="space-y-8" data-animate="solution-content">
+              <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+                Strategic Communication Design Through Autonomy Intelligence
+              </h2>
+              <div class="w-12 h-px bg-foreground/20"></div>
+            </div>
+            
+            <div class="space-y-8" data-animate="solution-description">
+              <p class="text-lg font-light text-foreground leading-relaxed">
+                Through Autonomy Intelligence, we design your communication strategy before critical conversations happen. You get 24/7 encrypted access when manipulation attempts emerge.
+              </p>
+              
+              <p class="text-base font-light text-foreground/70 leading-relaxed">
+                Using advanced pattern recognition, we identify threats to your authority before they manifest and design strategic responses that restore your freedom to choose.
+              </p>
+              
+              <div class="pt-8 border-t border-foreground/10">
+                <p class="text-xl font-light text-foreground leading-relaxed">
+                  You see exploitation patterns before they take effect, transforming vulnerability into leverage.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-4 lg:col-start-9">
+          <div class="space-y-12">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+      };
+
+      const elementsWithDelays = [
+        { selector: '[data-animate="solution-content"]', delay: 0 },
+        { selector: '[data-animate="solution-description"]', delay: 100 }
+      ];
+
+      elementsWithDelays.forEach(({ selector, delay }) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const targetElement = entry.target;
+                setTimeout(() => {
+                  targetElement.classList.remove('opacity-0', 'translate-y-10');
+                  targetElement.classList.add('opacity-100', 'translate-y-0');
+                }, delay);
+              }
+            });
+          }, observerOptions);
+
+          observer.observe(element);
+        }
+      });
+    });
+  </script>
+
+
+  <!-- Who We Serve: ClientInsights-Inspired Professional Layout -->
+  <section class="py-32 lg:py-40 bg-background">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12">
+      <div class="grid lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-4 lg:col-start-2">
+          <div class="space-y-8" data-animate="serve-content">
+            <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+              Who GenZen Pro Serves
+            </h2>
+            <div class="w-12 h-px bg-foreground/20"></div>
+            <p class="text-base font-light text-foreground/70 leading-relaxed">
+              GenZen Pro is for leaders experiencing:
+            </p>
+            <div class="pt-8 border-t border-foreground/10">
+              <p class="text-xl font-light text-foreground leading-relaxed">
+                When calculated communication tactics are targeting your decision-making authority, GenZen Pro provides the strategic framework to restore your power.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-7 lg:col-start-6">
+          <div class="space-y-16">
+            <div class="relative group cursor-pointer hover:scale-105 transition-all duration-300" data-animate="scenario-1">
+              <div class="grid grid-cols-12 gap-6 items-start p-6 rounded-lg hover:bg-foreground/5 transition-colors duration-300">
+                <div class="col-span-3">
+                  <div class="space-y-2">
+                    <div class="text-sm font-light text-foreground tracking-wider uppercase">
+                      CRITICAL
+                    </div>
+                    <div class="text-sm font-light text-foreground/70">
+                      Negotiations
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-9">
+                  <div class="space-y-4">
+                    <div class="w-16 h-1 bg-foreground/20 rounded-full">
+                      <div class="w-12 h-1 bg-foreground group-hover:bg-foreground/80 transition-all duration-300 rounded-full"></div>
+                    </div>
+                    <p class="text-base font-light text-foreground/70 leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                      Critical negotiations where your own words get turned against you
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-px bg-foreground/10 mt-12 transition-all duration-300 group-hover:bg-foreground/20" />
+            </div>
+
+            <div class="relative group cursor-pointer hover:scale-105 transition-all duration-300" data-animate="scenario-2">
+              <div class="grid grid-cols-12 gap-6 items-start p-6 rounded-lg hover:bg-foreground/5 transition-colors duration-300">
+                <div class="col-span-3">
+                  <div class="space-y-2">
+                    <div class="text-sm font-light text-foreground tracking-wider uppercase">
+                      SYSTEMATIC
+                    </div>
+                    <div class="text-sm font-light text-foreground/70">
+                      Undermining
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-9">
+                  <div class="space-y-4">
+                    <div class="w-20 h-1 bg-foreground/20 rounded-full">
+                      <div class="w-16 h-1 bg-foreground group-hover:bg-foreground/80 transition-all duration-300 rounded-full"></div>
+                    </div>
+                    <p class="text-base font-light text-foreground/70 leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                      Business or personal relationships where someone is systematically undermining your authority
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-px bg-foreground/10 mt-12 transition-all duration-300 group-hover:bg-foreground/20" />
+            </div>
+
+            <div class="relative group cursor-pointer hover:scale-105 transition-all duration-300" data-animate="scenario-3">
+              <div class="grid grid-cols-12 gap-6 items-start p-6 rounded-lg hover:bg-foreground/5 transition-colors duration-300">
+                <div class="col-span-3">
+                  <div class="space-y-2">
+                    <div class="text-sm font-light text-foreground tracking-wider uppercase">
+                      HIGH-CONFLICT
+                    </div>
+                    <div class="text-sm font-light text-foreground/70">
+                      Scenarios
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-9">
+                  <div class="space-y-4">
+                    <div class="w-24 h-1 bg-foreground/20 rounded-full">
+                      <div class="w-20 h-1 bg-foreground group-hover:bg-foreground/80 transition-all duration-300 rounded-full"></div>
+                    </div>
+                    <p class="text-base font-light text-foreground/70 leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                      High-conflict scenarios where traditional advice makes things worse
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-px bg-foreground/10 mt-12 transition-all duration-300 group-hover:bg-foreground/20" />
+            </div>
+
+            <div class="relative group cursor-pointer hover:scale-105 transition-all duration-300" data-animate="scenario-4">
+              <div class="grid grid-cols-12 gap-6 items-start p-6 rounded-lg hover:bg-foreground/5 transition-colors duration-300">
+                <div class="col-span-3">
+                  <div class="space-y-2">
+                    <div class="text-sm font-light text-foreground tracking-wider uppercase">
+                      REGULATORY
+                    </div>
+                    <div class="text-sm font-light text-foreground/70">
+                      Legal Risk
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-9">
+                  <div class="space-y-4">
+                    <div class="w-28 h-1 bg-foreground/20 rounded-full">
+                      <div class="w-24 h-1 bg-foreground group-hover:bg-foreground/80 transition-all duration-300 rounded-full"></div>
+                    </div>
+                    <p class="text-base font-light text-foreground/70 leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                      Regulatory or legal situations where every word could destroy your future
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-px bg-foreground/10 mt-12 transition-all duration-300 group-hover:bg-foreground/20" />
+            </div>
+
+            <div class="relative group cursor-pointer hover:scale-105 transition-all duration-300" data-animate="scenario-5">
+              <div class="grid grid-cols-12 gap-6 items-start p-6 rounded-lg hover:bg-foreground/5 transition-colors duration-300">
+                <div class="col-span-3">
+                  <div class="space-y-2">
+                    <div class="text-sm font-light text-foreground tracking-wider uppercase">
+                      REPUTATION
+                    </div>
+                    <div class="text-sm font-light text-foreground/70">
+                      Attacks
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-9">
+                  <div class="space-y-4">
+                    <div class="w-20 h-1 bg-foreground/20 rounded-full">
+                      <div class="w-16 h-1 bg-foreground group-hover:bg-foreground/80 transition-all duration-300 rounded-full"></div>
+                    </div>
+                    <p class="text-base font-light text-foreground/70 leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                      Reputation attacks where the truth doesn't seem to matter
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+      };
+
+      const elementsWithDelays = [
+        { selector: '[data-animate="serve-content"]', delay: 0 },
+        { selector: '[data-animate="scenario-1"]', delay: 100 },
+        { selector: '[data-animate="scenario-2"]', delay: 200 },
+        { selector: '[data-animate="scenario-3"]', delay: 300 },
+        { selector: '[data-animate="scenario-4"]', delay: 400 },
+        { selector: '[data-animate="scenario-5"]', delay: 500 }
+      ];
+
+      elementsWithDelays.forEach(({ selector, delay }) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const targetElement = entry.target;
+                setTimeout(() => {
+                  targetElement.classList.remove('opacity-0', 'translate-y-10');
+                  targetElement.classList.add('opacity-100', 'translate-y-0');
+                }, delay);
+              }
+            });
+          }, observerOptions);
+
+          observer.observe(element);
+        }
+      });
+    });
+  </script>
+
+
+  <!-- Case Study: Executive Summary Presentation -->
+  <section class="py-32 lg:py-40">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12">
+      <div class="grid lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-7">
+          <div class="space-y-12" data-animate="case-overview">
+            <div class="space-y-8">
+              <div class="text-xs font-light text-foreground/40 tracking-widest uppercase mb-8">
+                Strategic Transformation in Action
+              </div>
+              <div class="text-lg font-light text-foreground tracking-tight">
+                case study 01
+              </div>
+              <div class="w-12 h-px bg-foreground/20"></div>
+            </div>
+            
+            <div class="space-y-8">
+              <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+                The Extraction Protocol
+              </h2>
+              
+              <p class="text-lg font-light text-foreground leading-relaxed">
+                How do you safely exit a situation threatening your life, dissolving your livelihood, and holding you psychologically hostage?
+              </p>
+              
+              <div class="space-y-6 pt-8 border-t border-foreground/10">
+                <h3 class="text-xl font-light text-foreground">The Situation</h3>
+                <p class="text-base font-light text-foreground/70 leading-relaxed">
+                  A client discovered her partner's methodical campaign had evolved beyond infidelity into a calculated scheme to erode her decision-making capacity while creating complete psychological dependency.
+                </p>
+              </div>
+              
+              <div class="space-y-6 pt-8 border-t border-foreground/10">
+                <h3 class="text-xl font-light text-foreground">Strategic Implementation</h3>
+                <p class="text-base font-light text-foreground/70 leading-relaxed">
+                  We implemented a comprehensive Extraction Protocol. Not communication techniques or coping strategies. A complete strategic architecture that returned power to its rightful holder.
+                </p>
+                <p class="text-base font-light text-foreground/70 leading-relaxed">
+                  When her partner attempted to use emotional reactions as evidence against her, we designed a response framework centered on factual documentation and measured communication. This transformed potential vulnerability into documented evidence serving her interests.
+                </p>
+              </div>
+              
+              <div class="space-y-6 pt-8 border-t border-foreground/10">
+                <h3 class="text-xl font-light text-foreground">The Transformation</h3>
+                <p class="text-base font-light text-foreground/70 leading-relaxed">
+                  She established communication boundaries, secured her living situation, and preserved critical evidence. Most significantly, she moved from questioning her own perceptions to navigating with quiet, strategic confidence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-4 lg:col-start-9">
+          <div class="space-y-16" data-animate="case-details">
+            <div class="space-y-8">
+              <h4 class="text-xl font-light text-foreground">Case Study Overview</h4>
+              
+              <div class="space-y-6">
+                <div class="border-l-2 border-foreground/10 pl-6">
+                  <div class="text-sm font-light text-foreground tracking-wider mb-2">CLASSIFICATION</div>
+                  <p class="text-sm font-light text-foreground/70 leading-relaxed">
+                    Psychological manipulation with systematic authority erosion
+                  </p>
+                </div>
+                
+                <div class="border-l-2 border-foreground/10 pl-6">
+                  <div class="text-sm font-light text-foreground tracking-wider mb-2">METHODOLOGY</div>
+                  <p class="text-sm font-light text-foreground/70 leading-relaxed">
+                    Strategic architecture deployment with factual documentation framework
+                  </p>
+                </div>
+                
+                <div class="border-l-2 border-foreground/10 pl-6">
+                  <div class="text-sm font-light text-foreground tracking-wider mb-2">KEY ACHIEVEMENTS</div>
+                  <p class="text-sm font-light text-foreground/70 leading-relaxed">
+                    Complete authority restoration and strategic confidence development
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="space-y-8">
+              <h4 class="text-xl font-light text-foreground">Strategic Framework</h4>
+              
+              <div class="space-y-4">
+                <div class="p-4 border border-foreground/10 rounded-lg">
+                  <div class="text-sm font-light text-foreground mb-2">Extraction Protocol</div>
+                  <div class="text-xs font-light text-foreground/60">Complete strategic architecture</div>
+                </div>
+                
+                <div class="p-4 border border-foreground/10 rounded-lg">
+                  <div class="text-sm font-light text-foreground mb-2">Documentation Framework</div>
+                  <div class="text-xs font-light text-foreground/60">Vulnerability to evidence transformation</div>
+                </div>
+                
+                <div class="p-4 border border-foreground/10 rounded-lg">
+                  <div class="text-sm font-light text-foreground mb-2">Authority Restoration</div>
+                  <div class="text-xs font-light text-foreground/60">Strategic confidence development</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+      };
+
+      const elementsWithDelays = [
+        { selector: '[data-animate="case-overview"]', delay: 0 },
+        { selector: '[data-animate="case-details"]', delay: 200 }
+      ];
+
+      elementsWithDelays.forEach(({ selector, delay }) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const targetElement = entry.target;
+                setTimeout(() => {
+                  targetElement.classList.remove('opacity-0', 'translate-y-10');
+                  targetElement.classList.add('opacity-100', 'translate-y-0');
+                }, delay);
+              }
+            });
+          }, observerOptions);
+
+          observer.observe(element);
+        }
+      });
+    });
+  </script>
+
+
+  <!-- Strategic Protection Process: Executive Timeline -->
+  <section class="py-32 lg:py-40 bg-foreground/5">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12">
+      <!-- Left-Aligned Header -->
+      <div class="max-w-lg mb-20">
+        <div class="space-y-8">
+          <div class="text-xs font-light text-foreground/40 tracking-widest uppercase">
+            how it works
+          </div>
+          <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+            Strategic Protection Process
+          </h2>
+          <div class="w-12 h-px bg-foreground/20"></div>
+          <p class="text-base font-light text-foreground/70 leading-relaxed">
+            Three-phase systematic approach to strategic protection and authority restoration across critical communication scenarios.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Centered Timeline -->
+      <div class="max-w-4xl mx-auto">
+        <div class="relative">
+          <!-- Elegant Timeline Line -->
+          <div class="absolute left-1/2 transform -translate-x-px top-8 bottom-8 w-px bg-gradient-to-b from-primary/20 via-foreground/10 to-primary/20"></div>
+          
+          <!-- Swiss-Inspired Timeline Cards -->
+          <div class="space-y-24">
+              <!-- Phase 01 - Right Side -->
+              <div class="relative group cursor-pointer" data-animate="phase-1">
+                <div class="grid grid-cols-12 gap-8 items-start">
+                  <!-- Empty Left -->
+                  <div class="col-span-5"></div>
+                  
+                  <!-- Center Indicator -->
+                  <div class="col-span-2 flex justify-center">
+                    <div class="relative flex-shrink-0 z-10">
+                      <div class="w-12 h-12 rounded-full bg-background border border-foreground/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-colors duration-300">
+                        <span class="text-sm font-light text-foreground/60">01</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Right Content -->
+                  <div class="col-span-5">
+                    <div class="group-hover:scale-[1.01] transition-transform duration-300">
+                      <div class="border-b border-foreground/10 pb-8 group-hover:border-foreground/20 transition-colors duration-300">
+                        <div class="flex items-start justify-between mb-6">
+                          <h3 class="text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">
+                            Power Dynamics Blueprint
+                          </h3>
+                          <div class="text-xs font-light text-foreground/50 tracking-wider uppercase bg-foreground/5 px-3 py-1 rounded">
+                            Intelligence
+                          </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                          <p class="text-base font-light text-foreground/70 leading-relaxed">
+                            Your Power Dynamics Blueprint reveals the complete pattern threatening your authority and determines how these patterns transform into strategic advantages.
+                          </p>
+                          
+                          <div class="grid grid-cols-12 gap-4 pt-4">
+                            <div class="col-span-3">
+                              <div class="text-xs font-light text-foreground/50 tracking-wider uppercase">
+                                Timeline
+                              </div>
+                              <div class="text-sm font-light text-foreground mt-1">
+                                24 Hours
+                              </div>
+                            </div>
+                            <div class="col-span-9">
+                              <div class="text-xs font-light text-foreground/50 tracking-wider uppercase mb-2">
+                                Protection Activation
+                              </div>
+                              <p class="text-sm font-light text-foreground/60 leading-relaxed">
+                                Preliminary protection measures activate for situations where control is being actively undermined.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Phase 02 - Left Side -->
+              <div class="relative group cursor-pointer" data-animate="phase-2">
+                <div class="grid grid-cols-12 gap-8 items-start">
+                  <!-- Left Content -->
+                  <div class="col-span-5">
+                    <div class="group-hover:scale-[1.01] transition-transform duration-300 text-right">
+                      <div class="border-b border-foreground/10 pb-8 group-hover:border-foreground/20 transition-colors duration-300">
+                        <div class="flex items-start justify-between mb-6">
+                          <h3 class="text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">
+                            Protection Framework
+                          </h3>
+                          <div class="text-xs font-light text-foreground/50 tracking-wider uppercase bg-foreground/5 px-3 py-1 rounded">
+                            Encrypted
+                          </div>
+                        </div>
+                        
+                        <div class="space-y-6 text-left">
+                          <p class="text-base font-light text-foreground/70 leading-relaxed">
+                            We establish protection against ongoing threats:
+                          </p>
+                          
+                          <div class="grid grid-cols-1 gap-3">
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">End-to-end encrypted communication through Signal</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">Priority protocols for immediate intervention</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">Communication frameworks tailored to your scenarios</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">Decision architecture for critical moments</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Center Indicator -->
+                  <div class="col-span-2 flex justify-center">
+                    <div class="relative flex-shrink-0 z-10">
+                      <div class="w-12 h-12 rounded-full bg-background border border-foreground/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-colors duration-300">
+                        <span class="text-sm font-light text-foreground/60">02</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Empty Right -->
+                  <div class="col-span-5"></div>
+                </div>
+              </div>
+              
+              <!-- Phase 03 - Right Side -->
+              <div class="relative group cursor-pointer" data-animate="phase-3">
+                <div class="grid grid-cols-12 gap-8 items-start">
+                  <!-- Empty Left -->
+                  <div class="col-span-5"></div>
+                  
+                  <!-- Center Indicator -->
+                  <div class="col-span-2 flex justify-center">
+                    <div class="relative flex-shrink-0 z-10">
+                      <div class="w-12 h-12 rounded-full bg-background border border-foreground/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-colors duration-300">
+                        <span class="text-sm font-light text-foreground/60">03</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Right Content -->
+                  <div class="col-span-5">
+                    <div class="group-hover:scale-[1.01] transition-transform duration-300">
+                      <div class="border-b border-foreground/10 pb-8 last:border-b-0 group-hover:border-foreground/20 transition-colors duration-300">
+                        <div class="flex items-start justify-between mb-6">
+                          <h3 class="text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">
+                            Strategic Implementation
+                          </h3>
+                          <div class="text-xs font-light text-foreground/50 tracking-wider uppercase bg-foreground/5 px-3 py-1 rounded">
+                            Real-Time
+                          </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                          <div class="grid grid-cols-1 gap-3">
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">Real-time strategic guidance when authority is being contested</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">Communication design that transforms vulnerabilities into leverage</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">Strategic protection that preserves your power to choose</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                              <div class="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0"></div>
+                              <span class="text-sm font-light text-foreground/70">Complete documentation transfer to your control or permanent removal</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+      };
+
+      const elementsWithDelays = [
+        { selector: '[data-animate="phase-1"]', delay: 0 },
+        { selector: '[data-animate="phase-2"]', delay: 150 },
+        { selector: '[data-animate="phase-3"]', delay: 300 }
+      ];
+
+      elementsWithDelays.forEach(({ selector, delay }) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          element.style.opacity = '0';
+          element.style.transform = 'translateY(30px)';
+          element.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
+          
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const targetElement = entry.target;
+                setTimeout(() => {
+                  targetElement.style.opacity = '1';
+                  targetElement.style.transform = 'translateY(0)';
+                }, delay);
+              }
+            });
+          }, observerOptions);
+
+          observer.observe(element);
+        }
+      });
+    });
+  </script>
+
+  <!-- Strategic Protection Framework: Executive DataStory Layout -->
+  <section id="solution" class="py-32 lg:py-40">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12">
+      <div class="space-y-20">
+        <!-- Left-Aligned Header -->
+        <div class="max-w-lg">
+          <div class="space-y-8" data-animate="framework-title">
+            <div class="text-xs font-light text-foreground/40 tracking-widest uppercase">
+              strategic framework
+            </div>
+            <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+              The Strategic Protection Framework
+            </h2>
+            <div class="w-12 h-px bg-foreground/20"></div>
+            <p class="text-base font-light text-foreground/70 leading-relaxed">
+              Comprehensive Autonomy Intelligence framework enabling systematic transformation and leverage creation across all critical communication scenarios.
+            </p>
+          </div>
+        </div>
+
+        <!-- Strategic Framework Grid -->
+        <div class="grid lg:grid-cols-12 gap-20">
+          <!-- Strategic Narrative Content -->
+          <div class="lg:col-span-7">
+            <div class="space-y-12" data-animate="framework-content">
+              <div class="space-y-8">
+                <p class="text-lg font-light text-foreground leading-relaxed">
+                  Our Autonomy Intelligence framework transforms critical conversations from vulnerability into leverage:
+                </p>
+                
+                <div class="pt-8 border-t border-foreground/10">
+                  <p class="text-xl font-light text-foreground leading-relaxed">
+                    When implemented, you move from reactive fear to strategic clarity. You stop needing external validation for what you already know.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strategic Framework Components -->
+          <div class="lg:col-span-5">
+            <div class="grid grid-cols-1 gap-6">
+              <!-- 01 - Communication Architecture -->
+              <div class="group relative cursor-pointer hover:scale-105 transition-all duration-300" data-animate="framework-component-1">
+                <div class="bg-background/80 backdrop-blur-sm border border-foreground/10 rounded-lg p-6 space-y-4 hover:border-foreground/30 hover:shadow-xl transition-all duration-300">
+                  <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                      <div class="text-lg font-light text-foreground/60">01</div>
+                      <div class="text-xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                        Communication Architecture
+                      </div>
+                    </div>
+                    <div class="space-y-2 text-sm font-light text-foreground/70 leading-relaxed">
+                      <div>• We design your communications before they occur</div>
+                      <div>• You maintain control when others create chaos</div>
+                      <div>• Manipulation attempts become leverage</div>
+                      <div>• You never surrender decision-making authority</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 02 - Real-Time Strategic Support -->
+              <div class="group relative cursor-pointer hover:scale-105 transition-all duration-300" data-animate="framework-component-2">
+                <div class="bg-background/80 backdrop-blur-sm border border-foreground/10 rounded-lg p-6 space-y-4 hover:border-foreground/30 hover:shadow-xl transition-all duration-300">
+                  <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                      <div class="text-lg font-light text-foreground/60">02</div>
+                      <div class="text-xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                        Real-Time Strategic Support
+                      </div>
+                    </div>
+                    <div class="space-y-2 text-sm font-light text-foreground/70 leading-relaxed">
+                      <div>• 24/7 encrypted access with guaranteed response times</div>
+                      <div>• Early threat identification before manifestation</div>
+                      <div>• Custom strategies for critical moments</div>
+                      <div>• Strategic responses designed in real-time</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 03 - Critical Protection -->
+              <div class="group relative cursor-pointer hover:scale-105 transition-all duration-300" data-animate="framework-component-3">
+                <div class="bg-background/80 backdrop-blur-sm border border-foreground/10 rounded-lg p-6 space-y-4 hover:border-foreground/30 hover:shadow-xl transition-all duration-300">
+                  <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                      <div class="text-lg font-light text-foreground/60">03</div>
+                      <div class="text-xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                        Critical Protection
+                      </div>
+                    </div>
+                    <div class="space-y-2 text-sm font-light text-foreground/70 leading-relaxed">
+                      <div>• Information requiring immediate protection identified</div>
+                      <div>• Document weaponization prevented</div>
+                      <div>• Privacy maintained when others seek exposure</div>
+                      <div>• Vulnerability mapping completed</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 04 - Proven Transformation -->
+              <div class="group relative cursor-pointer hover:scale-105 transition-all duration-300" data-animate="framework-component-4">
+                <div class="bg-background/80 backdrop-blur-sm border border-foreground/10 rounded-lg p-6 space-y-4 hover:border-foreground/30 hover:shadow-xl transition-all duration-300">
+                  <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                      <div class="text-lg font-light text-foreground/60">04</div>
+                      <div class="text-xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                        Proven Transformation
+                      </div>
+                    </div>
+                    <div class="space-y-2 text-sm font-light text-foreground/70 leading-relaxed">
+                      <div>• Pressure points converted into leverage</div>
+                      <div>• Position-strengthening responses to threats developed</div>
+                      <div>• Long-term advantages created from immediate challenges</div>
+                      <div>• Resilient systems built to prevent future vulnerability</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+      };
+
+      // Framework section animations
+      const frameworkElements = [
+        { selector: '[data-animate="framework-title"]', delay: 0 },
+        { selector: '[data-animate="framework-content"]', delay: 200 },
+        { selector: '[data-animate="framework-component-1"]', delay: 300 },
+        { selector: '[data-animate="framework-component-2"]', delay: 400 },
+        { selector: '[data-animate="framework-component-3"]', delay: 500 },
+        { selector: '[data-animate="framework-component-4"]', delay: 600 }
+      ];
+
+      frameworkElements.forEach(({ selector, delay }) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const targetElement = entry.target;
+                setTimeout(() => {
+                  targetElement.classList.remove('opacity-0', 'translate-y-10');
+                  targetElement.classList.add('opacity-100', 'translate-y-0');
+                }, delay);
+              }
+            });
+          }, observerOptions);
+
+          observer.observe(element);
+        }
+      });
+    });
+  </script>
+
+  <!-- Why GenZen Pro Succeeds: Missing Section -->
+  <section class="py-32 lg:py-40 bg-foreground/5">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12">
+      <div class="grid lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-6">
+          <div class="space-y-12">
+            <div class="space-y-8">
+              <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+                Why GenZen Pro Succeeds When Others Fail
+              </h2>
+              <div class="w-12 h-px bg-foreground/20"></div>
+            </div>
+            
+            <div class="space-y-8">
+              <p class="text-lg font-light text-foreground leading-relaxed">
+                We use Autonomy Intelligence - advanced pattern recognition that reveals the calculated tactics targeting your freedom to choose that others completely miss.
+              </p>
+              
+              <p class="text-base font-light text-foreground/70 leading-relaxed">
+                While others might recognize elements of your situation, only a Strategic Communication specialist possesses the complete threat identification system and implementation expertise necessary to convert these challenges into leverage.
+              </p>
+              
+              <div class="pt-8 border-t border-foreground/10">
+                <p class="text-xl font-light text-foreground leading-relaxed">
+                  When implemented, you move from reactive fear to strategic clarity. You stop needing external validation for what you already know.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div class="space-y-12">
+            <div class="space-y-8">
+              <h3 class="text-xl font-light text-foreground">This Work Has:</h3>
+              
+              <div class="space-y-6">
+                <div class="flex items-start space-x-4">
+                  <div class="w-1 h-1 rounded-full bg-foreground mt-2 flex-shrink-0"></div>
+                  <p class="text-base font-light text-foreground/70 leading-relaxed">
+                    Transformed a federal investigation into strategic advantage
+                  </p>
+                </div>
+                
+                <div class="flex items-start space-x-4">
+                  <div class="w-1 h-1 rounded-full bg-foreground mt-2 flex-shrink-0"></div>
+                  <p class="text-base font-light text-foreground/70 leading-relaxed">
+                    Guided a first-time negotiator to close €200M
+                  </p>
+                </div>
+                
+                <div class="flex items-start space-x-4">
+                  <div class="w-1 h-1 rounded-full bg-foreground mt-2 flex-shrink-0"></div>
+                  <p class="text-base font-light text-foreground/70 leading-relaxed">
+                    Converted harassment and threats into opportunities for growth
+                  </p>
+                </div>
+                
+                <div class="flex items-start space-x-4">
+                  <div class="w-1 h-1 rounded-full bg-foreground mt-2 flex-shrink-0"></div>
+                  <p class="text-base font-light text-foreground/70 leading-relaxed">
+                    Designed clean exits from toxic situations while protecting assets and authority
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Founder Section: About component -->
+  <section id="about">
+    <About />
+  </section>
+
+  <!-- CTA Section: Professional ExecutiveSummary -->
+  <section class="py-32 lg:py-40" id="apply">
+    <div class="max-w-6xl mx-auto px-8 lg:px-12">
+      <div class="grid lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-6">
+          <div class="space-y-12">
+            <div class="space-y-8">
+              <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+                Apply For Your Power Dynamics Blueprint
+              </h2>
+              <div class="w-12 h-px bg-foreground/20"></div>
+            </div>
+            
+            <div class="space-y-8">
+              <p class="text-lg font-light text-foreground leading-relaxed">
+                Your Power Dynamics Blueprint identifies the exploitation signatures targeting your decision-making authority and transforms these patterns into strategic advantages.
+              </p>
+              
+              <div class="space-y-6">
+                {applicationPoints.map((point) => (
+                  <div class="flex items-start space-x-4">
+                    <div class="w-1 h-1 rounded-full bg-foreground mt-2 flex-shrink-0" />
+                    <p class="text-base font-light text-foreground leading-relaxed">
+                      {point}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div class="space-y-16">
+            <div class="space-y-8">
+              <h3 class="text-xl font-light text-foreground">Strategic Evaluation Process</h3>
+              <div class="space-y-6">
+                <div class="border-l-2 border-foreground/10 pl-6">
+                  <div class="text-sm font-light text-foreground tracking-wider mb-2">COMPREHENSIVE</div>
+                  <p class="text-sm font-light text-foreground leading-relaxed">
+                    This is a complimentary strategic evaluation conducted with complete discretion
+                  </p>
+                </div>
+                
+                <div class="border-l-2 border-foreground/10 pl-6">
+                  <div class="text-sm font-light text-foreground tracking-wider mb-2">IMMEDIATE ACCESS</div>
+                  <p class="text-sm font-light text-foreground leading-relaxed">
+                    When you apply, you receive immediate access to "The Architecture of Power: Transforming Exploitation Into Advantage" — revealing the three fundamental exploitation patterns and their transformation pathways
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-6">
+              <div>
+                <SimpleQualificationModal 
+                  client:load
+                  triggerText="Begin Your Application Here"
+                  variant="outline"
+                  size="lg"
+                  className="w-full font-light text-base px-8 py-3 border-2 border-foreground/30 hover:border-primary hover:bg-primary/10 hover:text-primary hover:scale-105 transition-all duration-300 rounded-full bg-transparent text-center"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

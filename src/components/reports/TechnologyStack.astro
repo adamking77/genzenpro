@@ -1,0 +1,101 @@
+---
+const technologies = [
+  { category: "Analytics", tools: ["Tableau", "Power BI", "Looker"], adoption: 85 },
+  { category: "Cloud", tools: ["AWS", "Azure", "GCP"], adoption: 92 },
+  { category: "Automation", tools: ["Zapier", "UiPath", "Selenium"], adoption: 78 },
+  { category: "Security", tools: ["Okta", "CrowdStrike", "Splunk"], adoption: 95 },
+];
+---
+
+<section class="py-32 lg:py-40">
+  <div class="max-w-6xl mx-auto px-20 lg:px-24">
+    <div class="space-y-20">
+      <div class="text-center space-y-8 animate-fade-in">
+        <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground hover:scale-105 transition-transform duration-300">
+          Technology Infrastructure
+        </h2>
+        <div class="w-12 h-px bg-foreground/20 mx-auto transition-all duration-1000 hover:w-24"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-7">
+          <div class="space-y-8 animate-fade-in" style="animation-delay: 200ms;">
+            <div class="prose prose-lg max-w-none">
+              <p class="text-lg font-light text-foreground leading-relaxed mb-6">
+                Our comprehensive technology infrastructure forms the backbone of modern service delivery, enabling scalable operations and data-driven decision making across all client engagements. The strategic selection and integration of best-in-class platforms ensures optimal performance and reliability.
+              </p>
+              
+              <h3 class="text-xl font-light text-foreground mb-4 mt-8">Cloud-First Architecture</h3>
+              <p class="text-base font-light text-foreground/80 leading-relaxed mb-6">
+                Our multi-cloud strategy leverages the strengths of AWS, Azure, and Google Cloud Platform to deliver unparalleled flexibility and redundancy. This approach has resulted in 99.8% uptime across all client-facing applications while maintaining cost efficiency through intelligent workload distribution.
+              </p>
+              
+              <h3 class="text-xl font-light text-foreground mb-4">Advanced Analytics Capabilities</h3>
+              <p class="text-base font-light text-foreground/80 leading-relaxed mb-6">
+                Integration of Tableau, Power BI, and Looker provides comprehensive visualization and reporting capabilities that transform raw data into actionable insights. Our analytics team has developed over 200 custom dashboards that drive strategic decision-making for clients across various industries.
+              </p>
+              
+              <div class="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg p-6 mt-8">
+                <h4 class="text-lg font-light text-foreground mb-3">Digital Transformation Impact</h4>
+                <p class="text-sm font-light text-foreground/70 leading-relaxed">
+                  The implementation of our modern technology stack has reduced manual processes by 73%, improved data processing speeds by 4x, and increased client satisfaction scores by 28% over the past year.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="space-y-8">
+            {technologies.map((tech, index) => (
+              <div 
+                class="group cursor-pointer animate-fade-in hover:scale-105 transition-all duration-300"
+                style={`animation-delay: ${400 + (index * 150)}ms;`}
+              >
+                <div class="space-y-4 p-6 rounded-lg hover:bg-foreground/5 transition-colors duration-300 border border-foreground/10 hover:border-foreground/20">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                      {tech.category}
+                    </h3>
+                    <div class="text-sm font-light text-foreground/70">
+                      {tech.adoption}% adoption
+                    </div>
+                  </div>
+                  
+                  <div class="flex flex-wrap gap-2">
+                    {tech.tools.map((tool, toolIndex) => (
+                      <span 
+                        class="px-3 py-1 bg-foreground/10 text-foreground text-sm font-light rounded-full hover:bg-foreground/20 transition-colors duration-300 animate-fade-in"
+                        style={`animation-delay: ${(index * 150) + (toolIndex * 50)}ms;`}
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div class="w-full bg-foreground/5 h-1 rounded-full overflow-hidden">
+                    <div 
+                      class="h-full bg-gradient-to-r from-foreground to-foreground/60 transition-all duration-2000 ease-out rounded-full animate-[slideWidth_2s_ease-out_both]"
+                      style={`width: ${tech.adoption}%; animation-delay: ${index * 0.3}s;`}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <div class="grid grid-cols-2 gap-6 pt-8">
+              <div class="group cursor-pointer hover:scale-110 transition-all duration-300 animate-fade-in text-center" style="animation-delay: 800ms;">
+                <div class="text-3xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">47</div>
+                <div class="text-xs font-light text-foreground tracking-wider">INTEGRATIONS</div>
+              </div>
+              <div class="group cursor-pointer hover:scale-110 transition-all duration-300 animate-fade-in text-center" style="animation-delay: 900ms;">
+                <div class="text-3xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">99.8%</div>
+                <div class="text-xs font-light text-foreground tracking-wider">UPTIME</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

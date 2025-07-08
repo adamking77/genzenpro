@@ -1,0 +1,20 @@
+---
+interface Props {
+  reversed?: boolean;
+}
+
+const { reversed = false } = Astro.props;
+---
+
+<section class="py-20 lg:py-32">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class:list={['grid grid-cols-12 gap-16', { 'lg:flex-row-reverse': reversed }]}>
+      <div class:list={['col-span-12 lg:col-span-6', { 'lg:col-start-7': reversed }]}>
+        <slot name="left" />
+      </div>
+      <div class:list={['col-span-12 lg:col-span-6', { 'lg:col-start-1 lg:row-start-1': reversed }]}>
+        <slot name="right" />
+      </div>
+    </div>
+  </div>
+</section>

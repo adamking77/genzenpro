@@ -1,0 +1,113 @@
+---
+// EXACT Strategic Protection Framework from WEB_COPY.md
+const services = [
+  {
+    number: "01",
+    title: "Communication Architecture",
+    description: "We design your communications before they occur. You maintain control when others create chaos. Manipulation attempts become leverage. You never surrender decision-making authority."
+  },
+  {
+    number: "02",
+    title: "Real-Time Strategic Support",
+    description: "24/7 encrypted access with guaranteed response times. Early threat identification before manifestation. Custom strategies for critical moments. Strategic responses designed in real-time."
+  },
+  {
+    number: "03",
+    title: "Critical Protection",
+    description: "Information requiring immediate protection identified. Document weaponization prevented. Privacy maintained when others seek exposure. Vulnerability mapping completed."
+  },
+  {
+    number: "04",
+    title: "Proven Transformation",
+    description: "Pressure points converted into leverage. Position-strengthening responses to threats developed. Long-term advantages created from immediate challenges. Resilient systems built to prevent future vulnerability."
+  }
+];
+---
+
+<section id="services" class="py-32 lg:py-40">
+  <div class="max-w-5xl mx-auto px-16 lg:px-20">
+    <div class="grid lg:grid-cols-12 gap-24">
+      <div class="lg:col-span-4">
+        <div class="space-y-8 sticky top-32 "" data-animate="services-title">
+          <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground">
+            Services
+          </h2>
+          <div class="w-12 h-px bg-foreground/20"></div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="space-y-16">
+          {services.map((service, index) => (
+            <div 
+              class="group ""
+              data-animate="service-item"
+              data-delay={index * 100}
+            >
+              <div class="grid grid-cols-12 gap-8 items-start py-8">
+                <div class="col-span-2">
+                  <span class="text-2xl font-light text-foreground/30">
+                    {service.number}
+                  </span>
+                </div>
+                <div class="col-span-10 space-y-4">
+                  <h3 class="text-2xl font-light text-foreground">
+                    {service.title}
+                  </h3>
+                  <p class="text-base font-light text-foreground/60 leading-relaxed max-w-md">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    // Observe services title
+    const titleElement = document.querySelector('[data-animate="services-title"]');
+    if (titleElement) {
+      const titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            element.classList.remove('opacity-0', 'translate-y-8');
+            element.classList.add('opacity-100', 'translate-y-0');
+          }
+        });
+      }, observerOptions);
+
+      titleObserver.observe(titleElement);
+    }
+
+    // Observe service items with staggered delays
+    const serviceItems = document.querySelectorAll('[data-animate="service-item"]');
+    serviceItems.forEach((item) => {
+      const delay = parseInt(item.getAttribute('data-delay') || '0');
+      
+      const itemObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            setTimeout(() => {
+              element.classList.remove('opacity-0', 'translate-y-8');
+              element.classList.add('opacity-100', 'translate-y-0');
+            }, delay);
+          }
+        });
+      }, observerOptions);
+
+      itemObserver.observe(item);
+    });
+  });
+</script>

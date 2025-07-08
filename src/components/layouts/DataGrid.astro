@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  data: Array<Array<string>>;
+}
+
+const { title, subtitle, data } = Astro.props;
+---
+
+<section class="py-20 lg:py-32">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class="space-y-16">
+      <div class="space-y-4">
+        <h2 class="text-3xl font-light tracking-tight text-foreground">
+          {title}
+        </h2>
+        {subtitle && (
+          <p class="text-base font-light text-foreground/60 max-w-2xl">
+            {subtitle}
+          </p>
+        )}
+        <div class="w-12 h-px bg-foreground/20"></div>
+      </div>
+      
+      <div class="grid grid-cols-12 gap-px bg-foreground/10">
+        {data.map((row, _rowIndex) => (
+          row.map((cell, _cellIndex) => (
+            <div 
+              class="col-span-12 md:col-span-6 lg:col-span-3 bg-background p-6 hover:bg-foreground/5 transition-colors duration-300"
+            >
+              <div class="text-sm font-light text-foreground">
+                {cell}
+              </div>
+            </div>
+          ))
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

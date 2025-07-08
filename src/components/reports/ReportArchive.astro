@@ -1,0 +1,257 @@
+---
+import { Search, Filter } from 'lucide-react';
+import { reportsData, type Report } from '../../data/reports.ts';
+import ReportCard from './ReportCard.astro';
+
+const categories = ['All', ...Array.from(new Set(reportsData.map(report => report.category)))];
+const allReports: Report[] = reportsData;
+
+const featuredReports = allReports.filter(report => report.featured);
+const regularReports = allReports.filter(report => !report.featured);
+---
+<section class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    {/* Header */}
+    <div class="space-y-12 mb-20">
+      <div class="space-y-8">
+        <div class="text-sm font-medium tracking-widest text-foreground/60 uppercase">
+          REPORTS ARCHIVE
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] tracking-tight max-w-4xl text-foreground">
+          Strategic Intelligence
+          <br />
+          & Market Analysis
+        </h1>
+        <p class="text-lg font-light text-foreground/70 leading-relaxed max-w-2xl">
+          Comprehensive collection of strategic reports, market analysis, and performance insights 
+          that drive informed decision-making across global markets.
+        </p>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between pt-8 border-t border-foreground/10">
+        <div class="relative flex-1 max-w-md">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/40" />
+          <input
+            type="text"
+            placeholder="Search reports..."
+            id="search-input"
+            class="w-full pl-10 pr-4 py-3 bg-background border border-foreground/10 rounded-lg text-sm font-light text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground/30 transition-colors duration-300"
+          />
+        </div>
+        
+        <div class="flex items-center space-x-4">
+          <Filter className="h-4 w-4 text-foreground/40" />
+          <div class="flex flex-wrap gap-2" id="category-filters">
+            {categories.map((category) => (
+              <button
+                data-category={category}
+                class={`px-4 py-2 text-xs font-light rounded-full transition-all duration-300 category-btn ${
+                  category === 'All'
+                    ? 'bg-foreground text-background'
+                    : 'bg-foreground/10 text-foreground hover:bg-foreground/20'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Reports -->
+    <div class="space-y-12 mb-20" id="featured-section">
+      <h2 class="text-2xl font-light tracking-tight text-foreground">
+        Featured Reports
+      </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="featured-reports">
+        {featuredReports.map((report, index) => {
+          const sequenceNumber = String(index + 1).padStart(2, '0');
+          return <ReportCard report={report} sequenceNumber={sequenceNumber} featured={true} />;
+        })}
+      </div>
+    </div>
+
+    <!-- All Reports -->
+    <div class="space-y-12" id="regular-section">
+      <h2 class="text-2xl font-light tracking-tight text-foreground">
+        {featuredReports.length > 0 ? 'All Reports' : 'Reports'}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="regular-reports">
+        {regularReports.map((report, index) => {
+          const sequenceNumber = String(featuredReports.length + index + 1).padStart(2, '0');
+          return <ReportCard report={report} sequenceNumber={sequenceNumber} featured={false} />;
+        })}
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div class="text-center py-20 hidden" id="no-results">
+      <div class="space-y-4">
+        <h3 class="text-xl font-light text-foreground">No reports found</h3>
+        <p class="text-base font-light text-foreground/70">
+          Try adjusting your search terms or filter criteria.
+        </p>
+      </div>
+    </div>
+
+    {/* Stats */}
+    <div class="grid grid-cols-3 gap-8 pt-20 mt-20 border-t border-foreground/10">
+      <div class="text-center space-y-2">
+        <div class="text-3xl font-light text-foreground">{reportsData.length}</div>
+        <div class="text-sm font-light text-foreground/60 tracking-wider">TOTAL REPORTS</div>
+      </div>
+      <div class="text-center space-y-2">
+        <div class="text-3xl font-light text-foreground">{categories.length - 1}</div>
+        <div class="text-sm font-light text-foreground/60 tracking-wider">CATEGORIES</div>
+      </div>
+      <div class="text-center space-y-2">
+        <div class="text-3xl font-light text-foreground">2024</div> {/* Assuming latest year is 2024 based on data */}
+        <div class="text-sm font-light text-foreground/60 tracking-wider">LATEST YEAR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Store original reports data
+  const reportsData = [
+    ...JSON.parse(`${JSON.stringify(featuredReports)}`).map(report => ({ ...report, featured: true })),
+    ...JSON.parse(`${JSON.stringify(regularReports)}`).map(report => ({ ...report, featured: false }))
+  ];
+
+  let currentSearchTerm = '';
+  let currentCategory = 'All';
+
+  // Search functionality
+  const searchInput = document.getElementById('search-input');
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  
+  function filterReports() {
+    const filteredReports = reportsData.filter(report => {
+      const matchesSearch = report.title.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
+                           report.description.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
+                           report.tags.some(tag => tag.toLowerCase().includes(currentSearchTerm.toLowerCase()));
+      const matchesCategory = currentCategory === 'All' || report.category === currentCategory;
+      return matchesSearch && matchesCategory;
+    });
+
+    const featuredFiltered = filteredReports.filter(report => report.featured);
+    const regularFiltered = filteredReports.filter(report => !report.featured);
+
+    // Show/hide sections based on results
+    const featuredSection = document.getElementById('featured-section');
+    const regularSection = document.getElementById('regular-section');
+    const noResults = document.getElementById('no-results');
+
+    if (filteredReports.length === 0) {
+      featuredSection.classList.add('hidden');
+      regularSection.classList.add('hidden');
+      noResults.classList.remove('hidden');
+    } else {
+      noResults.classList.add('hidden');
+      
+      if (featuredFiltered.length > 0) {
+        featuredSection.classList.remove('hidden');
+        renderFeaturedReports(featuredFiltered);
+      } else {
+        featuredSection.classList.add('hidden');
+      }
+      
+      if (regularFiltered.length > 0) {
+        regularSection.classList.remove('hidden');
+        renderRegularReports(regularFiltered);
+      } else {
+        regularSection.classList.add('hidden');
+      }
+    }
+  }
+
+  function renderFeaturedReports(reports) {
+    const container = document.getElementById('featured-reports');
+    container.innerHTML = reports.map((report, index) => {
+      const sequenceNumber = String(index + 1).padStart(2, '0');
+      return createReportCardHTML(report, sequenceNumber, true);
+    }).join('');
+  }
+
+  function renderRegularReports(reports) {
+    const container = document.getElementById('regular-reports');
+    const featuredCount = reportsData.filter(r => r.featured).length;
+    container.innerHTML = reports.map((report, index) => {
+      const sequenceNumber = String(featuredCount + index + 1).padStart(2, '0');
+      return createReportCardHTML(report, sequenceNumber, false);
+    }).join('');
+  }
+
+  function createReportCardHTML(report, sequenceNumber, featured) {
+    return `
+      <a href="/reports/${report.slug}/" class="${featured ? 'lg:col-span-1' : ''} group block transition-all duration-300 hover:scale-105">
+        <div class="bg-background border border-foreground/10 rounded-lg p-8 h-full hover:border-foreground/30 hover:shadow-xl transition-all duration-300">
+          <div class="space-y-6">
+            <div class="flex items-start justify-between">
+              <div class="space-y-2">
+                <div class="flex items-center space-x-2">
+                  <span class="px-3 py-1 bg-foreground/10 text-foreground text-xs font-light rounded-full">
+                    ${report.category}
+                  </span>
+                  ${report.featured ? '<span class="px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-light rounded-full">Featured</span>' : ''}
+                </div>
+              </div>
+              <div class="text-xs font-light text-foreground/40 tracking-wider">
+                ${sequenceNumber}
+              </div>
+            </div>
+            <div class="space-y-4">
+              <h3 class="${featured ? 'text-2xl lg:text-3xl' : 'text-xl'} font-light leading-tight tracking-tight text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                ${report.title}
+              </h3>
+              <p class="text-base font-light text-foreground/70 leading-relaxed line-clamp-3">
+                ${report.description}
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-foreground/10">
+              <div class="flex items-center space-x-4 text-xs font-light text-foreground/50">
+                <div class="flex items-center space-x-1">
+                  <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                  <span>${report.publishDate}</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span>${report.readTime}</span>
+                </div>
+              </div>
+              <div class="text-xs font-light text-foreground group-hover:text-blue-500 transition-colors duration-300">
+                Read Report →
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    `;
+  }
+
+  // Event listeners
+  searchInput?.addEventListener('input', (e) => {
+    currentSearchTerm = e.target.value;
+    filterReports();
+  });
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      currentCategory = button.dataset.category;
+      
+      // Update button styles
+      categoryButtons.forEach(btn => {
+        if (btn.dataset.category === currentCategory) {
+          btn.className = 'px-4 py-2 text-xs font-light rounded-full transition-all duration-300 category-btn bg-foreground text-background';
+        } else {
+          btn.className = 'px-4 py-2 text-xs font-light rounded-full transition-all duration-300 category-btn bg-foreground/10 text-foreground hover:bg-foreground/20';
+        }
+      });
+      
+      filterReports();
+    });
+  });
+</script>

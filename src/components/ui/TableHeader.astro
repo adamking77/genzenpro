@@ -1,0 +1,11 @@
+---
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'thead'> {}
+
+const { class: aClass, ...rest } = Astro.props;
+---
+<thead class={cn("[&_tr]:border-b", aClass)} {...rest}>
+  <slot />
+</thead>

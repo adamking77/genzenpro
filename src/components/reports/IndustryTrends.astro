@@ -1,0 +1,81 @@
+---
+// Note: This component originally used 'recharts' for a BarChart, 'useScrollTrigger',
+// and animated progress bars. For this structural conversion, these are represented by placeholders.
+// Full implementation will require client-side solutions.
+
+// const trendData = [
+//   { sector: 'Tech', adoption: 85, potential: 95 },
+//   { sector: 'Finance', adoption: 72, potential: 88 },
+//   { sector: 'Healthcare', adoption: 68, potential: 92 },
+//   { sector: 'Retail', adoption: 45, potential: 78 },
+//   { sector: 'Manufacturing', adoption: 38, potential: 65 },
+// ]; // Removed as trendData is not used
+
+const isVisible = true; // Simulate visibility
+// Removed animation-delay styles for this structural conversion.
+---
+<section class="py-32 lg:py-40">
+  <div class="max-w-4xl mx-auto px-20 lg:px-24">
+    <div class="grid lg:grid-cols-12 gap-20">
+      <div class="lg:col-span-7">
+        <div class="space-y-12">
+          <div class="space-y-8"> {/* Removed animate-fade-in */}
+            <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground hover:scale-105 transition-transform duration-300">
+              Industry Trends
+            </h2>
+            <div class="w-12 h-px bg-foreground/20 transition-all duration-1000 hover:w-24"></div>
+          </div>
+          
+          <div class="h-64 w-full group cursor-pointer"> {/* Removed animate-fade-in and style */}
+            <div class="w-full h-full flex items-center justify-center border border-dashed border-foreground/20 rounded-lg">
+               <p class="text-foreground/50 text-center">
+                [Placeholder for Bar Chart]<br/>
+                (Originally implemented with Recharts)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lg:col-span-4 lg:col-start-9">
+        <div class="space-y-12">
+          <div class="space-y-6"> {/* Removed animate-fade-in and style */}
+            <h3 class="text-xl font-light text-foreground hover:scale-105 transition-transform duration-300">Digital Transformation</h3>
+            <p class="text-sm font-light text-foreground leading-relaxed">
+              Technology sector leads adoption rates with 85% implementation, while traditional 
+              industries show significant growth potential.
+            </p>
+          </div>
+          
+          <div class="space-y-8">
+            <div> {/* Removed animate-fade-in and style */}
+              <div class="flex justify-between items-end mb-2">
+                <span class="text-sm font-light text-foreground">Current Adoption</span>
+                <span class="text-sm font-light text-foreground">62%</span>
+              </div>
+              <div class="w-full bg-foreground/10 h-1 rounded-full overflow-hidden">
+                <div
+                  class="bg-foreground h-full rounded-full"
+                  style={{ width: isVisible ? '62%' : '0%' }}
+                />
+              </div>
+            </div>
+            
+            <div> {/* Removed animate-fade-in and style */}
+              <div class="flex justify-between items-end mb-2">
+                <span class="text-sm font-light text-foreground">Growth Potential</span>
+                <span class="text-sm font-light text-foreground">84%</span>
+              </div>
+              <div class="w-full bg-foreground/10 h-1 rounded-full overflow-hidden">
+                <div
+                  class="bg-foreground/30 h-full rounded-full"
+                  style={{ width: isVisible ? '84%' : '0%' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+---
+import { cn } from "../../lib/utils";
+
+export interface Props extends Omit<astroHTML.JSX.IntrinsicElements['div'], 'class'> {
+  class?: string;
+}
+
+const { class: customClass, ...rest } = Astro.props;
+---
+<div
+  class={cn("text-sm [&_p]:leading-relaxed", customClass)}
+  {...rest}
+>
+  <slot />
+</div>

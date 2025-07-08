@@ -1,0 +1,67 @@
+---
+// Import global styles
+import '../styles/global.css';
+import { ThemeProvider } from '../components/ThemeProvider.tsx';
+import Navigation from '../components/Navigation.astro'; // New import
+import Footer from '../components/sections/Footer.astro'; // Import Footer
+import ScrollToTop from '../components/interactive/ScrollToTop.tsx'; // Adjusted path
+import { Toaster } from '../components/ui/toaster.tsx'; // Adjusted path
+
+// Define props that can be passed to the layout
+export interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+    title = 'Default Title',
+    description = 'Default description'
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script is:inline>
+      (function() {
+        const storageKey = 'astro-ui-theme';
+        const getThemePreference = () => {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem(storageKey)) {
+            return localStorage.getItem(storageKey);
+          }
+          return 'system';
+        };
+        
+        const isDark = () => {
+          const themePreference = getThemePreference();
+          if (themePreference === 'system') {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches;
+          }
+          return themePreference === 'dark';
+        };
+        
+        const theme = isDark() ? 'dark' : 'light';
+        document.documentElement.classList.add(theme);
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+</head>
+<body class="min-h-screen bg-background font-sans antialiased">
+  <ThemeProvider client:load defaultTheme="system" storageKey="astro-ui-theme">
+    <Navigation />
+    <main class="flex-1 pt-20 lg:pt-24">
+      <slot />
+    </main>
+    <Toaster client:load />
+    <ScrollToTop client:idle />
+    <Footer />
+  </ThemeProvider>
+</body>
+</html>

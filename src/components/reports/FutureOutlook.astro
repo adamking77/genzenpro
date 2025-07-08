@@ -1,0 +1,148 @@
+---
+const projections = [
+  { year: "2025", revenue: "$32M", growth: "+29%", confidence: 92 },
+  { year: "2026", revenue: "$41M", growth: "+28%", confidence: 87 },
+  { year: "2027", revenue: "$53M", growth: "+29%", confidence: 82 },
+];
+
+const initiatives = [
+  { title: "AI Integration", timeline: "Q2 2025", impact: "High", description: "Implement advanced AI solutions across service delivery" },
+  { title: "Global Expansion", timeline: "Q3 2025", impact: "Medium", description: "Enter 5 new international markets" },
+  { title: "Platform Modernization", timeline: "Q4 2025", impact: "High", description: "Complete digital transformation initiative" },
+];
+// Note: animation-delay styles and complex progress bar animations
+// have been simplified or removed for this structural conversion.
+---
+<section class="py-32 lg:py-40">
+  <div class="max-w-6xl mx-auto px-20 lg:px-24">
+    <div class="space-y-20">
+      <div class="text-center space-y-8"> {/* Removed animate-fade-in */}
+        <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground hover:scale-105 transition-transform duration-300">
+          Strategic Roadmap & Future Outlook
+        </h2>
+        <div class="w-12 h-px bg-foreground/20 mx-auto transition-all duration-1000 hover:w-24"></div>
+      </div>
+
+      <div class="space-y-16">
+        <div> {/* Removed animate-fade-in and style */}
+          <div class="prose prose-lg max-w-none">
+            <p class="text-lg font-light text-foreground leading-relaxed mb-6">
+              Our strategic vision for the next three years is anchored in sustainable growth, technological innovation, and market expansion. The comprehensive roadmap outlined below reflects our commitment to maintaining industry leadership while adapting to evolving client needs and market dynamics.
+            </p>
+            
+            <p class="text-base font-light text-foreground/80 leading-relaxed mb-8">
+              Revenue projections are based on detailed market analysis, existing client pipeline, and conservative growth assumptions across all service verticals. Our confidence intervals reflect thorough risk assessment while accounting for potential market volatility and competitive pressures in the consulting sector.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-20">
+          <div class="lg:col-span-7 space-y-12">
+            <div> {/* Removed animate-fade-in and style */}
+              <h3 class="text-2xl font-light text-foreground mb-6">Revenue Growth Trajectory</h3>
+              
+              <div class="prose max-w-none mb-8">
+                <p class="text-base font-light text-foreground/80 leading-relaxed">
+                  Our three-year financial outlook demonstrates sustained growth momentum driven by strategic market positioning and operational excellence. The projected compound annual growth rate of 28.7% reflects our ability to capitalize on emerging opportunities while maintaining service quality and client satisfaction.
+                </p>
+              </div>
+              
+              <div class="space-y-6">
+                {projections.map((projection) => (
+                  // Removed animate-fade-in class and style attribute for animationDelay
+                  <div class="group relative cursor-pointer hover:scale-102 transition-all duration-300 border border-foreground/10 rounded-lg p-6 hover:border-foreground/20 hover:shadow-lg">
+                    <div class="grid grid-cols-12 gap-4 items-center">
+                      <div class="col-span-2">
+                        <div class="text-2xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                          {projection.year}
+                        </div>
+                      </div>
+                      <div class="col-span-6">
+                        <div class="space-y-2">
+                          <div class="text-xl font-light text-foreground">
+                            {projection.revenue}
+                          </div>
+                          <div class="text-sm font-light text-foreground/70 bg-foreground/10 px-2 py-1 rounded-full inline-block">
+                            {projection.growth}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-span-4">
+                        <div class="space-y-2">
+                          <div class="text-sm font-light text-foreground/70">
+                            Confidence: {projection.confidence}%
+                          </div>
+                          <div class="w-full bg-foreground/5 h-1 rounded-full overflow-hidden">
+                            <div
+                              class="h-full bg-gradient-to-r from-foreground to-foreground/60 rounded-full"
+                              style={{ width: `${projection.confidence}%` }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-12">
+            <div> {/* Removed animate-fade-in and style */}
+              <h3 class="text-2xl font-light text-foreground mb-6">Strategic Initiatives</h3>
+              
+              <div class="prose max-w-none mb-8">
+                <p class="text-base font-light text-foreground/80 leading-relaxed">
+                  Key strategic initiatives will drive operational transformation and market expansion over the planning horizon. Each initiative has been carefully evaluated for impact potential and resource requirements.
+                </p>
+              </div>
+              
+              <div class="space-y-6">
+                {initiatives.map((initiative) => (
+                  // Removed animate-fade-in class and style attribute for animationDelay
+                  <div class="group cursor-pointer hover:scale-105 transition-all duration-300">
+                    <div class="border-l-2 border-foreground/10 pl-6 hover:border-foreground/30 transition-colors duration-300 py-4">
+                      <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                          <h4 class="text-lg font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                            {initiative.title}
+                          </h4>
+                          <span class:list={[
+                            "text-xs font-light px-2 py-1 rounded-full transition-all duration-300",
+                            initiative.impact === 'High' 
+                              ? 'bg-foreground/20 text-foreground/80' 
+                              : 'bg-foreground/10 text-foreground/70'
+                          ]}>
+                            {initiative.impact} Impact
+                          </span>
+                        </div>
+                        <p class="text-sm font-light text-foreground/70 leading-relaxed">
+                          {initiative.description}
+                        </p>
+                        <div class="text-xs font-light text-foreground/50">
+                          Target: {initiative.timeline}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-foreground/5 to-foreground/10 rounded-lg p-8"> {/* Removed animate-fade-in and style */}
+          <div class="prose prose-lg max-w-none">
+            <h3 class="text-xl font-light text-foreground mb-4">Market Positioning & Competitive Advantage</h3>
+            <p class="text-base font-light text-foreground/80 leading-relaxed mb-4">
+              Our strategic positioning leverages deep industry expertise, technological innovation, and client-centric service delivery to maintain competitive differentiation. The roadmap prioritizes sustainable growth while preserving the agility and responsiveness that define our market approach.
+            </p>
+            <p class="text-sm font-light text-foreground/70 leading-relaxed">
+              Risk mitigation strategies include diversified revenue streams, flexible resource allocation, and continuous investment in emerging technologies and talent development programs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  size?: "sm" | "md" | "lg";
+  class?: string; // In Astro, 'class' is used for HTML class attribute
+}
+
+const { size = "md", class: className } = Astro.props;
+
+const sizeClasses = {
+  sm: "h-4 w-4",
+  md: "h-6 w-6",
+  lg: "h-8 w-8",
+};
+---
+
+<div
+  class:list={[
+    "animate-spin rounded-full border-2 border-current border-t-transparent",
+    sizeClasses[size],
+    className,
+  ]}
+>
+  <span class="sr-only">Loading...</span>
+</div>

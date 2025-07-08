@@ -1,0 +1,39 @@
+---
+interface Collection {
+  name: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  collections: Collection[];
+}
+
+const { title, collections } = Astro.props;
+---
+
+<section class="py-16 lg:py-24">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="space-y-8">
+      <h3 class="text-lg font-medium text-foreground tracking-wide mb-8">
+        {title}
+      </h3>
+      <div class="space-y-6">
+        {collections.map((collection, index) => (
+          <div class="group cursor-pointer">
+            <div class="flex items-start justify-between p-4 border border-foreground/10 hover:border-foreground/20 transition-colors duration-300">
+              <div class="space-y-2 flex-1">
+                <div class="text-base font-light text-foreground group-hover:text-blue-500 transition-colors duration-300">
+                  {collection.name}
+                </div>
+              </div>
+              <div class="text-xs font-light text-foreground/40 ml-4">
+                {String(index + 1).padStart(2, '0')}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

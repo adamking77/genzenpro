@@ -1,0 +1,101 @@
+---
+// Data for performance metrics
+const metrics = [
+  { label: "Revenue Growth", value: "142%", trend: "up", percentage: 85 },
+  { label: "Client Retention", value: "94%", trend: "stable", percentage: 94 },
+  { label: "Market Share", value: "28%", trend: "up", percentage: 28 },
+  { label: "Efficiency", value: "86%", trend: "up", percentage: 86 },
+];
+---
+
+<section class="py-32 lg:py-40 bg-secondary/30" id="performance-metrics-section">
+  <div class="max-w-4xl mx-auto px-20 lg:px-24">
+    <div class="grid lg:grid-cols-12 gap-16">
+      <div class="lg:col-span-4">
+        <div class="space-y-8 sticky top-32 animate-fade-in">
+          <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground hover:scale-105 transition-transform duration-300">
+            Performance
+          </h2>
+          <div class="w-12 h-px bg-foreground/20 transition-all duration-1000 hover:w-24"></div>
+          <p class="text-base font-light text-foreground leading-relaxed">
+            Key performance indicators demonstrate consistent growth and operational excellence 
+            across all measured dimensions.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {metrics.map((metric, index) => (
+            <div
+              class="group relative cursor-pointer hover:scale-105 transition-all duration-300 animate-fade-in"
+              style={`animation-delay: ${index * 150}ms;`}
+            >
+              <div class="space-y-4 border-l border-foreground/10 pl-8 hover:border-foreground/30 transition-colors duration-300">
+                <div class="flex items-start justify-between">
+                  <div class="space-y-2">
+                    <div class="text-3xl font-light text-foreground group-hover:scale-110 transition-transform duration-300">
+                      {metric.value}
+                    </div>
+                    <div class="text-sm font-light text-foreground tracking-wider">
+                      {metric.label.toUpperCase()}
+                    </div>
+                  </div>
+                  <div
+                    class:list={[
+                      "w-2 h-2 rounded-full mt-2 transition-all duration-300 group-hover:scale-150",
+                      {
+                        'bg-foreground/80 group-hover:shadow-lg group-hover:shadow-foreground/50': metric.trend === 'up',
+                        'bg-foreground/60 group-hover:shadow-lg group-hover:shadow-foreground/30': metric.trend === 'down',
+                        'bg-foreground/40 group-hover:shadow-lg group-hover:shadow-foreground/20': metric.trend === 'stable',
+                      }
+                    ]}
+                  />
+                </div>
+                <div class="w-full bg-foreground/5 h-2 rounded-full overflow-hidden">
+                  <div
+                    class="progress-bar h-full bg-gradient-to-r from-foreground to-foreground/60 transition-all duration-2000 ease-out rounded-full"
+                    data-percentage={metric.percentage}
+                    style={`width: 0%; transition-delay: ${index * 0.2}s;`}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const section = document.getElementById('performance-metrics-section');
+    if (!section) return;
+
+    const progressBars = section.querySelectorAll('.progress-bar');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          progressBars.forEach(bar => {
+            const progressBarElement = bar as HTMLElement; // Type assertion
+            const percentage = progressBarElement.dataset.percentage;
+            if (percentage) {
+              progressBarElement.style.width = `${percentage}%`;
+            }
+          });
+          // To animate only once, uncomment the line below:
+          // observer.unobserve(section); 
+        } else {
+          // Optional: Reset animation if section scrolls out of view and then back in
+          // progressBars.forEach(bar => {
+          //  (bar as HTMLElement).style.width = '0%';
+          // });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  });
+</script>

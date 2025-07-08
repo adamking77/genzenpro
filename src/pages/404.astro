@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import { Button } from '../components/ui/button.tsx';
+import Footer from '../components/sections/Footer.astro'; // Added Footer for consistency
+import { Home, FileText, ArrowLeft } from 'lucide-react'; // Import lucide-react icons
+
+const suggestedPages = [
+  { name: "Home", path: "/", icon: Home, description: "Return to the main page" },
+  { name: "Reports", path: "/reports", icon: FileText, description: "Browse our detailed reports" },
+];
+
+const attemptedPath = Astro.url.pathname; // Get the path that triggered 404
+---
+<BaseLayout title="404 - Page Not Found" description="The page you are looking for could not be found.">
+  <Navigation />
+  <div class="min-h-screen pt-24 flex items-center justify-center bg-background">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      {/* 404 Number */}
+      <div class="mb-8">
+        <h1 class="text-8xl lg:text-9xl font-light text-foreground/20 leading-none">
+          404
+        </h1>
+      </div>
+
+      {/* Error Message */}
+      <div class="mb-12">
+        <h2 class="text-2xl lg:text-3xl font-light text-foreground mb-4">
+          Page Not Found
+        </h2>
+        <p class="text-foreground/70 font-light max-w-md mx-auto">
+          The page you're looking for doesn't exist or has been moved to a different location.
+        </p>
+      </div>
+
+      {/* Quick Actions */}
+      <div class="mb-12">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button asChild variant="default" className="font-light">
+            <a href="/" class="flex items-center">
+              <ArrowLeft className="mr-2 h-4 w-4" /> Go Home
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="font-light">
+            <a href="/reports">
+              View Reports
+            </a>
+          </Button>
+        </div>
+      </div>
+
+      {/* Suggested Pages */}
+      {suggestedPages.length > 0 && (
+        <div class="grid gap-4 sm:grid-cols-2 max-w-3xl mx-auto"> {/* Adjusted to sm:grid-cols-2 as Showcase is removed */}
+          {suggestedPages.map((page) => (
+            <a
+              href={page.path}
+              class="group p-6 border border-foreground/10 rounded-lg hover:border-foreground/20 hover:bg-foreground/5 transition-all duration-300"
+            >
+              <div class="flex flex-col items-center text-center space-y-3">
+                <span class="h-8 w-8 text-foreground/40 group-hover:text-foreground/60 transition-colors duration-300 flex items-center justify-center">
+                  <page.icon className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 class="font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                    {page.name}
+                  </h3>
+                  <p class="text-sm text-foreground/50 font-light mt-1">
+                    {page.description}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* Error Path Info */}
+      <div class="mt-16 pt-8 border-t border-foreground/10">
+        <p class="text-xs text-foreground/30 font-light">
+          Attempted to access: <span class="font-mono">{attemptedPath}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</BaseLayout>

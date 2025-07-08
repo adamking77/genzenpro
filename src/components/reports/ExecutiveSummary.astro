@@ -1,0 +1,123 @@
+---
+const keyPoints = [
+  "Market expansion opportunities identified in emerging sectors",
+  "Operational efficiency improvements yielding 24% cost reduction",
+  "Strategic partnerships driving 142% revenue growth",
+  "Digital transformation initiatives ahead of industry benchmarks"
+];
+---
+<section class="py-32 lg:py-40">
+  <div class="max-w-4xl mx-auto px-20 lg:px-24">
+    <div class="grid lg:grid-cols-12 gap-20">
+      <div class="lg:col-span-6">
+        <div class="space-y-12 opacity-0 translate-y-10 transition-all duration-1000" data-animate="executive-content">
+          <div class="space-y-8">
+            <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground">
+              Executive Summary
+            </h2>
+            <div class="w-12 h-px bg-foreground/20"></div>
+          </div>
+          
+          <div class="space-y-8">
+            <p class="text-lg font-light text-foreground leading-relaxed">
+              This comprehensive analysis reveals strategic opportunities for sustainable 
+              growth and competitive advantage across multiple market segments.
+            </p>
+            
+            <div class="space-y-6">
+              {keyPoints.map((point) => (
+                <div class="flex items-start space-x-4">
+                  <div class="w-1 h-1 rounded-full bg-foreground mt-2 flex-shrink-0" />
+                  <p class="text-sm font-light text-foreground leading-relaxed">
+                    {point}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lg:col-span-5 lg:col-start-8">
+        <div class="space-y-16 opacity-0 translate-y-10 transition-all duration-1000 delay-200" data-animate="executive-recommendations">
+          <div class="space-y-8">
+            <h3 class="text-xl font-light text-foreground">Key Recommendations</h3>
+            <div class="space-y-6">
+              <div class="border-l-2 border-foreground/10 pl-6">
+                <div class="text-sm font-light text-foreground tracking-wider mb-2">
+                  IMMEDIATE
+                </div>
+                <p class="text-sm font-light text-foreground leading-relaxed">
+                  Accelerate digital transformation initiatives to maintain competitive positioning
+                </p>
+              </div>
+              
+              <div class="border-l-2 border-foreground/10 pl-6">
+                <div class="text-sm font-light text-foreground tracking-wider mb-2">
+                  SHORT-TERM
+                </div>
+                <p class="text-sm font-light text-foreground leading-relaxed">
+                  Expand market presence in high-growth sectors identified in analysis
+                </p>
+              </div>
+              
+              <div class="border-l-2 border-foreground/10 pl-6">
+                <div class="text-sm font-light text-foreground tracking-wider mb-2">
+                  LONG-TERM
+                </div>
+                <p class="text-sm font-light text-foreground leading-relaxed">
+                  Develop strategic partnerships to leverage emerging technology trends
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <div class="text-xl font-light mb-1 text-foreground">Q1 2025</div>
+              <div class="text-xs font-light text-foreground tracking-wider">NEXT REVIEW</div>
+            </div>
+            <div>
+              <div class="text-xl font-light mb-1 text-foreground">12 mo</div>
+              <div class="text-xs font-light text-foreground tracking-wider">TIMELINE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    // Observe elements with progressive delays
+    const elementsWithDelays = [
+      { selector: '[data-animate="executive-content"]', delay: 0 },
+      { selector: '[data-animate="executive-recommendations"]', delay: 200 }
+    ];
+
+    elementsWithDelays.forEach(({ selector, delay }) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const targetElement = entry.target as HTMLElement;
+              setTimeout(() => {
+                targetElement.classList.remove('opacity-0', 'translate-y-10');
+                targetElement.classList.add('opacity-100', 'translate-y-0');
+              }, delay);
+            }
+          });
+        }, observerOptions);
+
+        observer.observe(element);
+      }
+    });
+  });
+</script>

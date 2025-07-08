@@ -1,0 +1,54 @@
+---
+import { Button } from '@/components/ui/button.tsx'; // Assuming .tsx, adjust if .astro
+
+export interface Props {
+  headline?: string;
+  subtext?: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+
+const {
+  headline = "Ready to get started?",
+  subtext = "Let's discuss how we can help transform your business with strategic insights and innovative solutions.",
+  buttonText = "Start a Conversation",
+  buttonLink = "#contact", // Default link, can be overridden
+}: Props = Astro.props;
+---
+
+<section class="py-32 lg:py-40">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class="grid grid-cols-12 gap-16">
+      <div class="col-span-12 lg:col-span-5">
+        {headline && (
+          <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground">
+            {headline}
+          </h2>
+        )}
+      </div>
+      
+      <div class="col-span-12 lg:col-span-6 lg:col-start-7">
+        <div class="space-y-8">
+          {subtext && (
+            <p class="text-lg font-light text-foreground/70 leading-relaxed">
+              {subtext}
+            </p>
+          )}
+          {buttonText && buttonLink && (
+            <div>
+              <a href={buttonLink}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="font-light border-foreground/20 hover:border-foreground/40"
+                >
+                  {buttonText}
+                </Button>
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,88 @@
+---
+const insights = [
+  {
+    category: "Satisfaction",
+    score: 9.2,
+    feedback: "Exceptional strategic guidance and implementation support",
+    clients: 47
+  },
+  {
+    category: "Value Delivery",
+    score: 8.8,
+    feedback: "Significant ROI improvement and operational efficiency gains",
+    clients: 52
+  },
+  {
+    category: "Innovation",
+    score: 9.0,
+    feedback: "Cutting-edge solutions that drive competitive advantage",
+    clients: 38
+  }
+];
+// Note: animation-delay styles have been removed for this structural conversion.
+---
+<section class="py-32 lg:py-40 bg-background">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-20">
+      <div class="lg:col-span-4 lg:col-start-2">
+        <div class="space-y-8"> {/* Removed animate-fade-in */}
+          <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground hover:scale-105 transition-transform duration-300">
+            Client Insights
+          </h2>
+          <div class="w-12 h-px bg-foreground/20 transition-all duration-1000 hover:w-24"></div>
+          <p class="text-base font-light text-foreground/70 leading-relaxed">
+            Direct feedback from our client base reveals consistent patterns of success 
+            and areas for continued improvement.
+          </p>
+        </div>
+      </div>
+      
+      <div class="lg:col-span-7 lg:col-start-6">
+        <div class="space-y-16">
+          {insights.map((insight, index) => (
+            // Removed animate-fade-in class and style attribute for animationDelay
+            <div class="relative group cursor-pointer hover:scale-105 transition-all duration-300">
+              <div class="grid grid-cols-12 gap-6 items-start p-6 rounded-lg hover:bg-foreground/5 transition-colors duration-300">
+                <div class="col-span-3">
+                  <div class="space-y-2">
+                    <div class="text-3xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                      {insight.score}
+                    </div>
+                    <div class="text-xs font-light text-foreground/60 tracking-wider uppercase">
+                      {insight.category}
+                    </div>
+                    <div class="text-xs font-light text-foreground/50">
+                      {insight.clients} clients
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-9">
+                  <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                      {[...Array(5)].map((_, i) => (
+                        <div
+                          class:list={[
+                            "w-2 h-2 rounded-full transition-all duration-300 hover:scale-150",
+                            i < Math.floor(insight.score / 2)
+                              ? 'bg-foreground group-hover:bg-foreground/80'
+                              : 'bg-foreground/20'
+                          ]}
+                        />
+                      ))}
+                    </div>
+                    <p class="text-base font-light text-foreground/70 leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                      "{insight.feedback}"
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {index < insights.length - 1 && (
+                <div class="w-full h-px bg-foreground/10 mt-12 transition-all duration-300 group-hover:bg-foreground/20" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

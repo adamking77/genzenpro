@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  author: string;
+  publication: string;
+  quote: string;
+  quoteAuthor: string;
+  description: string;
+  imageSrc: string; // Path for Astro's Image component (e.g. /src/assets/image.png or imported asset)
+  imageAlt: string;
+  imageWidth?: number;
+  imageHeight?: number;
+}
+
+const {
+  title,
+  subtitle,
+  author,
+  publication,
+  quote,
+  quoteAuthor,
+  description,
+  imageSrc,
+  imageAlt,
+  imageWidth = 600, // Default width for the image
+  imageHeight = 900 // Default height for the image (maintaining a 2:3 aspect ratio)
+} = Astro.props;
+---
+
+<section class="py-24 lg:py-32 bg-background text-foreground">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Image Column -->
+      <div class="lg:col-span-4 flex justify-center items-start "" data-animate="book-image">
+        {imageSrc && (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            class="w-full h-auto object-contain rounded-lg shadow-xl max-w-sm mx-auto"
+          />
+        )}
+      </div>
+      
+      <!-- Text Content Column -->
+      <div class="lg:col-span-8 space-y-6 "" data-animate="book-content">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] tracking-tight text-foreground">
+          {title}
+        </h1>
+        {subtitle && (
+          <p class="text-lg font-light text-foreground/70 leading-relaxed max-w-2xl">
+            {subtitle}
+          </p>
+        )}
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 pt-2">
+            <div class="space-y-1">
+              <p class="text-xs font-normal text-foreground/40 tracking-widest uppercase">Written by</p>
+              <p class="text-base font-light text-foreground">{author}</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-xs font-normal text-foreground/40 tracking-widest uppercase">Published</p>
+              <p class="text-base font-light text-foreground">{publication}</p>
+            </div>
+        </div>
+        
+        <div class="w-8 h-px bg-foreground/30 my-2"></div> {/* Separator */}
+        
+        <blockquote class="space-y-3">
+          <p class="text-xl font-light text-foreground leading-relaxed italic">
+            "{quote}"
+          </p>
+          <cite class="text-sm font-light text-foreground/50 not-italic block">
+            &mdash; {quoteAuthor}
+          </cite>
+        </blockquote>
+        
+        <p class="text-sm font-light text-foreground/60 leading-relaxed">
+          {description}
+        </p>
+        
+        <div class="flex space-x-8 pt-6">
+          <button class="text-xs font-normal text-foreground/50 tracking-widest uppercase hover:text-foreground transition-colors">
+            Summary
+          </button>
+          <button class="text-xs font-normal text-foreground tracking-widest uppercase hover:text-foreground/70 transition-colors">
+            Recommend It
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    // Observe elements with progressive delays
+    const elementsWithDelays = [
+      { selector: '[data-animate="book-image"]', delay: 0 },
+      { selector: '[data-animate="book-content"]', delay: 200 }
+    ];
+
+    elementsWithDelays.forEach(({ selector, delay }) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const targetElement = entry.target as HTMLElement;
+              setTimeout(() => {
+                targetElement.classList.remove('opacity-0', 'translate-y-10');
+                targetElement.classList.add('opacity-100', 'translate-y-0');
+              }, delay);
+            }
+          });
+        }, observerOptions);
+
+        observer.observe(element);
+      }
+    });
+  });
+</script>

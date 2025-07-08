@@ -1,0 +1,52 @@
+---
+import ScrollAnimator from '../interactive/ScrollAnimator.tsx';
+---
+<section class="py-16 sm:py-24 lg:py-32 xl:py-48 bg-secondary/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 xl:gap-24 items-center">
+      <div class="order-2 lg:order-1">
+        <ScrollAnimator client:load threshold={0.2} duration={1000}>
+          <div class="space-y-8 sm:space-y-10 lg:space-y-12">
+            <div class="space-y-6 sm:space-y-8">
+              <div class="text-xs font-normal text-foreground/40 tracking-widest uppercase mb-6 sm:mb-8">
+                The Founder
+              </div>
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+                Adam King: Founder & Chief Strategist
+              </h2>
+              <div class="w-12 sm:w-16 h-px bg-foreground/20"></div>
+            </div>
+            
+            <div class="space-y-4 sm:space-y-6">
+              <p class="text-base sm:text-lg font-light text-foreground/70 leading-relaxed">
+                For fifteen years, I've focused on helping leaders maintain control when their authority faces calculated attack.
+              </p>
+              <p class="text-sm sm:text-base font-light text-foreground/60 leading-relaxed">
+                I've guided clients through nine-figure negotiations, protected against manipulation attempts, restored power when traditional methods failed, and transformed crisis into advantage.
+              </p>
+              <p class="text-sm sm:text-base font-light text-foreground/60 leading-relaxed">
+                Nothing is more meaningful than watching clients reclaim their power through strategic systems designed for the communications that determine everything.
+              </p>
+            </div>
+          </div>
+        </ScrollAnimator>
+      </div>
+      
+      <div class="order-1 lg:order-2">
+        <ScrollAnimator client:load threshold={0.2} duration={1000} delay={200}>
+          <div class="flex items-center justify-center h-full">
+            <div class="relative">
+              <img
+                src="/images/founder-portrait.jpg"
+                alt="Adam King - Founder & Chief Strategist"
+                class="w-64 h-80 sm:w-72 sm:h-90 lg:w-80 lg:h-96 object-cover rounded-lg shadow-xl"
+              />
+              <div class="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/10 to-transparent"></div>
+            </div>
+          </div>
+        </ScrollAnimator>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,82 @@
+---
+const financialData = [
+  { label: "Total Revenue", value: "$24.7M", change: "+18.2%", period: "YoY" },
+  { label: "Operating Margin", value: "32.4%", change: "+4.1%", period: "vs Q3" },
+  { label: "Net Profit", value: "$7.8M", change: "+22.7%", period: "YoY" },
+  { label: "Cash Flow", value: "$12.3M", change: "+15.3%", period: "QoQ" },
+];
+// Note: animation-delay styles have been removed for this structural conversion.
+---
+<section class="py-32 lg:py-40 bg-foreground/5">
+  <div class="max-w-6xl mx-auto px-20 lg:px-24">
+    <div class="space-y-20">
+      <div class="text-center space-y-8 opacity-0 translate-y-10 transition-all duration-1000" data-animate="financial-title">
+        <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground hover:scale-105 transition-transform duration-300">
+          Financial Highlights
+        </h2>
+        <div class="w-12 h-px bg-foreground/20 mx-auto transition-all duration-1000 hover:w-24"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-7">
+          <div class="space-y-8"> {/* Removed animate-fade-in and style */}
+            <div class="prose prose-lg max-w-none">
+              <p class="text-lg font-light text-foreground leading-relaxed mb-6">
+                Our financial performance this quarter demonstrates exceptional resilience and strategic execution across all key metrics. The organization has successfully navigated market volatility while maintaining strong growth trajectories in both traditional and emerging revenue streams.
+              </p>
+              
+              <p class="text-base font-light text-foreground/80 leading-relaxed mb-6">
+                Revenue growth of 18.2% year-over-year reflects our diversified portfolio approach and successful client acquisition strategy. The improvement in operating margin to 32.4% indicates operational efficiency gains from our digital transformation initiatives and streamlined service delivery processes.
+              </p>
+              
+              <p class="text-base font-light text-foreground/80 leading-relaxed mb-8">
+                Cash flow performance remains robust at $12.3M, providing substantial flexibility for strategic investments and expansion opportunities. This strong financial foundation positions us well for continued growth while maintaining prudent risk management practices.
+              </p>
+              
+              <div class="bg-background/60 border-l-4 border-foreground/30 pl-6 py-4 rounded-r-lg">
+                <p class="text-sm font-light text-foreground/70 italic leading-relaxed">
+                  "The consistent performance across all financial metrics validates our strategic focus on operational excellence and client-centric innovation. These results provide a solid foundation for our ambitious growth plans in the coming quarters."
+                </p>
+                <cite class="text-xs font-light text-foreground/50 mt-2 block">— Chief Financial Officer</cite>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+            {financialData.map((item) => (
+              // Removed animate-fade-in class and style attribute for animationDelay
+              <div class="group relative cursor-pointer hover:scale-105 transition-all duration-300">
+                <div class="bg-background/80 backdrop-blur-sm border border-foreground/10 rounded-lg p-6 space-y-4 hover:border-foreground/30 hover:shadow-xl transition-all duration-300">
+                  <div class="space-y-2">
+                    <div class="text-2xl font-light text-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                      {item.value}
+                    </div>
+                    <div class="text-sm font-light text-foreground/70 tracking-wider">
+                      {item.label.toUpperCase()}
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between pt-3 border-t border-foreground/10">
+                    <div class:list={[
+                      "text-sm font-light px-3 py-1 rounded-full transition-all duration-300",
+                      item.change.startsWith('+') 
+                        ? 'bg-foreground/10 text-foreground/70 group-hover:bg-foreground/20' 
+                        : 'bg-foreground/20 text-foreground/80 group-hover:bg-foreground/30'
+                    ]}>
+                      {item.change}
+                    </div>
+                    <div class="text-xs font-light text-foreground/50">
+                      {item.period}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

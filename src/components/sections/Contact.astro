@@ -1,0 +1,12 @@
+---
+// Import the React component that will be used as an Astro island.
+// This component contains the entire Contact section, including static text and the interactive form.
+import ContactSectionIsland from "./Contact.tsx";
+---
+
+{/*
+  The ContactSectionIsland component is rendered with `client:visible`.
+  This means the JavaScript for the interactive form will load when the component scrolls into view.
+  All props and structure are handled within Contact.tsx itself.
+*/}
+<ContactSectionIsland client:visible />

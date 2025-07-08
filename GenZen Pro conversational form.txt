@@ -1,0 +1,36 @@
+GenZen Pro conversational form fileds
+
+1. Name 
+2. Email
+3. Company name or URL 
+4. Your role or title 
+5. Which best described your situation (multi-select)
+	- High-stakes negotiation requiring strategic leverage
+	- Communication challenges with sophisticated manipulation
+	- Potential threat to reputation or legacy
+	- Need for strategic protection in complex situation
+	- Extraction from toxic situation or arrangement
+	- Other 
+6. What makes this particularly challenging or complex? Please describe the situation as best as possible. (Large Text Field)
+7. What Solutions have you already tried? (Large Text Field)
+8. What is your timeline for resolution? (select field)
+	- Immediate (within days)
+	- Short-term (within weeks)
+	- Medium-term (within months)
+	- Strategic (ongoing situation)
+9. Which of these outcomes would create the most significant impact? (multi-select)
+	- Maintaining control in high-stakes communications
+	- Seeing manipulation patterns before they take effect
+	- Transforming vulnerabilities into strategic advantages
+	- Designing effective exit strategies while protecting assets
+	- Creating leveraged control over critical situations
+	- Restoring power in situations where it's being systematically stripped away
+
+10. How did you learn about GenZen Pro? (select field)
+	- Web search
+	- Referral 
+	- LinkedIn
+	- Free Resource
+	- Other 
+
+11. Is there anything else you believe would be important for us to know before our conversation? (large text field)

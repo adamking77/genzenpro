@@ -1,0 +1,14 @@
+---
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'td'> {}
+
+const { class: aClass, ...rest } = Astro.props;
+---
+<td
+  class={cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", aClass)}
+  {...rest}
+>
+  <slot />
+</td>

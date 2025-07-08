@@ -1,0 +1,15 @@
+---
+import { cn } from "../../lib/utils";
+
+export interface Props extends Omit<astroHTML.JSX.IntrinsicElements['h5'], 'class'> {
+  class?: string;
+}
+
+const { class: customClass, ...rest } = Astro.props;
+---
+<h5
+  class={cn("mb-1 font-medium leading-none tracking-tight", customClass)}
+  {...rest}
+>
+  <slot />
+</h5>

@@ -1,0 +1,71 @@
+---
+import { Button } from '../ui/button.tsx';
+import ScrollAnimator from '../interactive/ScrollAnimator.tsx';
+import SimpleQualificationModal from '../interactive/SimpleQualificationModal.tsx';
+import GenZenConversationalForm from '../interactive/GenZenConversationalForm.tsx';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  location: string;
+  ctaText: string;
+  ctaLink: string;
+}
+
+const { 
+  eyebrow,
+  title, 
+  subtitle,
+  location,
+  ctaText,
+  ctaLink
+} = Astro.props;
+---
+
+<section class="company-hero-section pt-32 pb-24 sm:pt-40 sm:pb-32 md:pt-48 md:pb-40 lg:pt-60 lg:pb-48 xl:pt-72 xl:pb-56 bg-background text-foreground">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-8 sm:space-y-10 lg:space-y-12">
+      {eyebrow && (
+        <div>
+          <ScrollAnimator client:load threshold={0.2} duration={1000}>
+            <div class="text-xs sm:text-xs font-normal text-foreground/40 tracking-widest uppercase mb-6 sm:mb-8">
+              {eyebrow}
+            </div>
+          </ScrollAnimator>
+        </div>
+      )}
+      
+      <div>
+        <ScrollAnimator client:load threshold={0.2} duration={1000} delay={eyebrow ? 200 : 0}>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-[1.1] tracking-tight max-w-5xl text-foreground">
+            {title} <span class="text-foreground/50 block sm:inline">{location}</span>
+          </h1>
+        </ScrollAnimator>
+      </div>
+      
+      {subtitle && (
+        <div>
+          <ScrollAnimator client:load threshold={0.2} duration={1000} delay={eyebrow ? 400 : 200}>
+            <p class="text-lg sm:text-xl md:text-2xl font-light text-foreground/70 leading-relaxed max-w-3xl">
+              {subtitle}
+            </p>
+          </ScrollAnimator>
+        </div>
+      )}
+      
+      <div>
+        <ScrollAnimator client:load threshold={0.2} duration={1000} delay={eyebrow ? 600 : 400}>
+          <SimpleQualificationModal 
+            client:load
+            triggerText={ctaText}
+            variant="outline"
+            size="lg"
+            className="font-light text-sm sm:text-base px-6 py-2.5 sm:px-8 sm:py-3 border-2 border-foreground/30 hover:border-primary hover:bg-primary/10 hover:text-primary hover:scale-105 transition-all duration-300 rounded-full"
+          />
+        </ScrollAnimator>
+      </div>
+    </div>
+  </div>
+</section>
+

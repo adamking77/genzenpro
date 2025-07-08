@@ -1,0 +1,52 @@
+---
+interface Props {
+  primaryText: string;
+  secondaryText?: string;
+  accentText?: string;
+  alignment?: 'left' | 'center' | 'right';
+}
+
+const { 
+  primaryText, 
+  secondaryText, 
+  accentText,
+  alignment = 'left' 
+} = Astro.props;
+
+const alignmentClasses = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right'
+};
+---
+
+<section class="py-32 lg:py-48">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class:list={["space-y-12", alignmentClasses[alignment]]}>
+      <div class="space-y-6">
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-light leading-[0.85] tracking-tight text-foreground">
+          {primaryText}
+        </h1>
+        {accentText && (
+          <div class="text-lg font-light text-foreground/50 tracking-widest uppercase">
+            {accentText}
+          </div>
+        )}
+      </div>
+      
+      {secondaryText && (
+        <div class="max-w-2xl mx-auto lg:mx-0">
+          <p class="text-xl font-light text-foreground/70 leading-relaxed">
+            {secondaryText}
+          </p>
+        </div>
+      )}
+      
+      <div class="grid grid-cols-12 gap-4 pt-16">
+        <div class="col-span-3 h-px bg-foreground/20"></div>
+        <div class="col-span-6"></div>
+        <div class="col-span-3 h-px bg-foreground/20"></div>
+      </div>
+    </div>
+  </div>
+</section>
