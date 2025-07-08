@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.json();
@@ -157,4 +159,11 @@ export const POST: APIRoute = async ({ request }) => {
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
+};
+
+export const GET: APIRoute = async () => {
+  return new Response(
+    JSON.stringify({ message: 'GenZen Pro Application API endpoint is working' }), 
+    { status: 200, headers: { 'Content-Type': 'application/json' } }
+  );
 };
