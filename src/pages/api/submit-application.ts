@@ -162,8 +162,17 @@ export const POST: APIRoute = async ({ request }) => {
 };
 
 export const GET: APIRoute = async () => {
+  const notionToken = import.meta.env.NOTION_TOKEN;
+  const notionDatabaseId = import.meta.env.NOTION_DATABASE_ID;
+  
   return new Response(
-    JSON.stringify({ message: 'GenZen Pro Application API endpoint is working' }), 
+    JSON.stringify({ 
+      message: 'GenZen Pro Application API endpoint is working',
+      hasToken: !!notionToken,
+      hasDatabase: !!notionDatabaseId,
+      tokenLength: notionToken ? notionToken.length : 0,
+      environment: import.meta.env.MODE
+    }), 
     { status: 200, headers: { 'Content-Type': 'application/json' } }
   );
 };
