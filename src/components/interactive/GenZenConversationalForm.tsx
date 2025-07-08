@@ -185,7 +185,7 @@ const GenZenConversationalForm: React.FC<GenZenConversationalFormProps> = ({ onC
     <div className={isModal ? "w-full flex flex-col" : "min-h-screen w-full flex flex-col"}>
       <div className={isModal ? "flex flex-col" : "flex-1 flex flex-col"}>
         {/* Fixed Progress Bar at Top */}
-        <div className="w-full bg-background/95 backdrop-blur-sm px-6 py-4 sticky top-0 z-10">
+        <div className="w-full bg-background/95 backdrop-blur-sm px-3 sm:px-6 py-3 sm:py-4 sticky top-0 z-10">
           <div className="max-w-2xl mx-auto">
             <Progress value={progress} className="mb-2" />
             <div className="flex justify-between items-center text-xs font-light tracking-widest uppercase text-foreground/60">
@@ -196,8 +196,8 @@ const GenZenConversationalForm: React.FC<GenZenConversationalFormProps> = ({ onC
         </div>
 
         {/* Main Content Area */}
-        <div className={isModal ? "flex flex-col justify-start px-6 pt-4" : "flex-1 flex flex-col justify-start px-6 pt-8"}>
-          <div className="w-full max-w-3xl mx-auto my-10">
+        <div className={isModal ? "flex flex-col justify-start px-3 sm:px-6 pt-2 sm:pt-4 overflow-x-hidden" : "flex-1 flex flex-col justify-start px-6 pt-8"}>
+          <div className="w-full max-w-3xl mx-auto my-6 sm:my-10">
             <AnimatePresence mode="wait">
               {currentQuestion === -1 && (
                 <motion.div
@@ -208,14 +208,14 @@ const GenZenConversationalForm: React.FC<GenZenConversationalFormProps> = ({ onC
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="text-center space-y-12"
                 >
-                  <div className="space-y-8">
+                  <div className="space-y-6 sm:space-y-8">
                     <div className="w-16 h-px bg-foreground/20 mx-auto"></div>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-light leading-[0.9] text-foreground">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-[0.9] text-foreground px-2">
                       Ready to apply for your 
                       <span className="block">Power Dynamics Blueprint?</span>
                     </h1>
                   </div>
-                  <p className="text-base sm:text-lg font-light leading-relaxed text-foreground/80 max-w-xl mx-auto">
+                  <p className="text-sm sm:text-base md:text-lg font-light leading-relaxed text-foreground/80 max-w-xl mx-auto px-2">
                     Let's start with a strategic evaluation to understand your situation and design your protection framework.
                   </p>
                   <Button 
@@ -243,11 +243,11 @@ const GenZenConversationalForm: React.FC<GenZenConversationalFormProps> = ({ onC
                         Question {currentQuestion + 1} of {questions.length}
                       </div>
                     </div>
-                    <label htmlFor={questions[currentQuestion].name} className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.1] text-foreground block">
+                    <label htmlFor={questions[currentQuestion].name} className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-[1.1] text-foreground block px-2">
                       {questions[currentQuestion].question}
                     </label>
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center px-2">
                     <div className="w-full max-w-2xl">
                       {questions[currentQuestion].type === 'text' && (
                         <Input

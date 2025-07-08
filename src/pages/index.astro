@@ -642,27 +642,112 @@ const applicationPoints = [
 
 
   <!-- Strategic Protection Process: Executive Timeline -->
-  <section class="py-32 lg:py-40 bg-foreground/5">
-    <div class="max-w-7xl mx-auto px-8 lg:px-12">
+  <section class="py-16 sm:py-24 lg:py-32 xl:py-40 bg-foreground/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
       <!-- Left-Aligned Header -->
-      <div class="max-w-lg mb-20">
-        <div class="space-y-8">
+      <div class="max-w-lg mb-12 sm:mb-16 lg:mb-20">
+        <div class="space-y-6 sm:space-y-8">
           <div class="text-xs font-light text-foreground/40 tracking-widest uppercase">
             how it works
           </div>
-          <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
             Strategic Protection Process
           </h2>
           <div class="w-12 h-px bg-foreground/20"></div>
-          <p class="text-base font-light text-foreground/70 leading-relaxed">
+          <p class="text-sm sm:text-base font-light text-foreground/70 leading-relaxed">
             Three-phase systematic approach to strategic protection and authority restoration across critical communication scenarios.
           </p>
         </div>
       </div>
       
-      <!-- Centered Timeline -->
+      <!-- Mobile-First Timeline -->
       <div class="max-w-4xl mx-auto">
-        <div class="relative">
+        <!-- Mobile: Vertical Stack -->
+        <div class="block lg:hidden space-y-12">
+          <div class="space-y-8">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-full bg-background border border-foreground/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-sm font-light text-foreground/60">01</span>
+              </div>
+              <h3 class="text-lg font-light text-foreground">Power Dynamics Blueprint</h3>
+            </div>
+            <div class="pl-14">
+              <div class="text-xs font-light text-foreground/50 tracking-wider uppercase bg-foreground/5 px-3 py-1 rounded mb-4 inline-block">
+                Intelligence
+              </div>
+              <p class="text-sm font-light text-foreground/70 leading-relaxed mb-4">
+                Your Power Dynamics Blueprint reveals the complete pattern threatening your authority and determines how these patterns transform into strategic advantages.
+              </p>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="space-y-2">
+                  <div class="text-foreground/50 font-light tracking-wider uppercase">Delivery</div>
+                  <div class="text-foreground font-light">24 Hours</div>
+                </div>
+                <div class="space-y-2">
+                  <div class="text-foreground/50 font-light tracking-wider uppercase">Protection</div>
+                  <div class="text-foreground font-light">Immediate</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-8">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-full bg-background border border-foreground/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-sm font-light text-foreground/60">02</span>
+              </div>
+              <h3 class="text-lg font-light text-foreground">Strategic Framework</h3>
+            </div>
+            <div class="pl-14">
+              <div class="text-xs font-light text-foreground/50 tracking-wider uppercase bg-foreground/5 px-3 py-1 rounded mb-4 inline-block">
+                Implementation
+              </div>
+              <p class="text-sm font-light text-foreground/70 leading-relaxed mb-4">
+                Complete strategic framework enables systematic conversion of vulnerability into leverage across all communications requiring protection.
+              </p>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="space-y-2">
+                  <div class="text-foreground/50 font-light tracking-wider uppercase">Delivery</div>
+                  <div class="text-foreground font-light">48 Hours</div>
+                </div>
+                <div class="space-y-2">
+                  <div class="text-foreground/50 font-light tracking-wider uppercase">Access</div>
+                  <div class="text-foreground font-light">24/7 Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-8">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-full bg-background border border-foreground/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-sm font-light text-foreground/60">03</span>
+              </div>
+              <h3 class="text-lg font-light text-foreground">Autonomy Restoration</h3>
+            </div>
+            <div class="pl-14">
+              <div class="text-xs font-light text-foreground/50 tracking-wider uppercase bg-foreground/5 px-3 py-1 rounded mb-4 inline-block">
+                Mastery
+              </div>
+              <p class="text-sm font-light text-foreground/70 leading-relaxed mb-4">
+                You maintain strategic control across critical communications. Authority restored through systematic leverage creation and protection framework mastery.
+              </p>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="space-y-2">
+                  <div class="text-foreground/50 font-light tracking-wider uppercase">Result</div>
+                  <div class="text-foreground font-light">Complete Control</div>
+                </div>
+                <div class="space-y-2">
+                  <div class="text-foreground/50 font-light tracking-wider uppercase">Duration</div>
+                  <div class="text-foreground font-light">Ongoing</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop: Timeline Layout -->
+        <div class="hidden lg:block relative">
           <!-- Elegant Timeline Line -->
           <div class="absolute left-1/2 transform -translate-x-px top-8 bottom-8 w-px bg-gradient-to-b from-primary/20 via-foreground/10 to-primary/20"></div>
           
@@ -881,27 +966,27 @@ const applicationPoints = [
   </script>
 
   <!-- Strategic Protection Framework: Executive DataStory Layout -->
-  <section id="solution" class="py-32 lg:py-40">
-    <div class="max-w-7xl mx-auto px-8 lg:px-12">
-      <div class="space-y-20">
+  <section id="solution" class="py-16 sm:py-24 lg:py-32 xl:py-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div class="space-y-12 sm:space-y-16 lg:space-y-20">
         <!-- Left-Aligned Header -->
         <div class="max-w-lg">
-          <div class="space-y-8" data-animate="framework-title">
+          <div class="space-y-6 sm:space-y-8" data-animate="framework-title">
             <div class="text-xs font-light text-foreground/40 tracking-widest uppercase">
               strategic framework
             </div>
-            <h2 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light leading-tight tracking-tight text-foreground">
               The Strategic Protection Framework
             </h2>
             <div class="w-12 h-px bg-foreground/20"></div>
-            <p class="text-base font-light text-foreground/70 leading-relaxed">
+            <p class="text-sm sm:text-base font-light text-foreground/70 leading-relaxed">
               Comprehensive Autonomy Intelligence framework enabling systematic transformation and leverage creation across all critical communication scenarios.
             </p>
           </div>
         </div>
 
         <!-- Strategic Framework Grid -->
-        <div class="grid lg:grid-cols-12 gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 lg:gap-20">
           <!-- Strategic Narrative Content -->
           <div class="lg:col-span-7">
             <div class="space-y-12" data-animate="framework-content">

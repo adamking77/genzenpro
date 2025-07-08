@@ -24,12 +24,12 @@ const services = [
 ];
 ---
 
-<section id="services" class="py-32 lg:py-40">
-  <div class="max-w-5xl mx-auto px-16 lg:px-20">
-    <div class="grid lg:grid-cols-12 gap-24">
+<section id="services" class="py-16 sm:py-24 lg:py-32 xl:py-40">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 lg:gap-24">
       <div class="lg:col-span-4">
-        <div class="space-y-8 sticky top-32 "" data-animate="services-title">
-          <h2 class="text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground">
+        <div class="space-y-6 sm:space-y-8 lg:sticky lg:top-32 mb-12 lg:mb-0" data-animate="services-title">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-light leading-tight tracking-tight text-foreground">
             Services
           </h2>
           <div class="w-12 h-px bg-foreground/20"></div>
@@ -37,24 +37,24 @@ const services = [
       </div>
 
       <div class="lg:col-span-8">
-        <div class="space-y-16">
+        <div class="space-y-10 sm:space-y-12 lg:space-y-16">
           {services.map((service, index) => (
             <div 
-              class="group ""
+              class="group"
               data-animate="service-item"
               data-delay={index * 100}
             >
-              <div class="grid grid-cols-12 gap-8 items-start py-8">
-                <div class="col-span-2">
-                  <span class="text-2xl font-light text-foreground/30">
+              <div class="flex flex-col sm:grid sm:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-start py-6 sm:py-8">
+                <div class="sm:col-span-2">
+                  <span class="text-xl sm:text-2xl font-light text-foreground/30">
                     {service.number}
                   </span>
                 </div>
-                <div class="col-span-10 space-y-4">
-                  <h3 class="text-2xl font-light text-foreground">
+                <div class="sm:col-span-10 space-y-3 sm:space-y-4">
+                  <h3 class="text-xl sm:text-2xl font-light text-foreground">
                     {service.title}
                   </h3>
-                  <p class="text-base font-light text-foreground/60 leading-relaxed max-w-md">
+                  <p class="text-sm sm:text-base font-light text-foreground/60 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
